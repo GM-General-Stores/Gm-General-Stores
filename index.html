@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Welcome to GM General Stores, your trusted supplier of high-quality Rice Products and a variety of other food items.">
+    <meta name="keywords" content="GM General Stores, Rice Products, food items, grocery store, quality food supplies">
+    <meta name="author" content="Your Name">
+    <link rel="icon" type="image/png" sizes="16x16" href="IMG-20240813-WA0051.jpg">
+    <link data-n-head="ssr" rel="manifest" href="/manifest.json" data-hid="manifest">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta property="og:site_name" content="GM General Stores" />
+    <meta property="og:image" content="https://fresh-teacher.github.io/Gm/IMG-20240813-WA0051.jpg" />
+    <title>GM General Stores</title>
+    <link rel="icon" href="IMG-20240813-WA0051.jpg" type="image/x-icon">
+</head>
+    <style>
+        :root {
+    --primary-blue: #1e3a8a;
+    --light-blue: #3b82f6;
+    --dark-blue: #1e40af;
+    --pale-blue: #dbeafe;
+    --white: #ffffff;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--pale-blue), var(--light-blue));
+    color: var(--dark-blue);
+        }
+        header {
+            background-color: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    text-align: center;
+    padding: 0.5em; /* Reduced from 1em */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav {
+    background-color: #444;
+    padding: 0.5em;
+    margin-top: 10px; /* Reduced from 60px */
+    padding-bottom: 1em; /* Added padding at the bottom */
+}
+
+
+        main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1em;
+    margin-top: 80px; /* Increased to account for the navbar and filter */
+}
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 1em;
+            padding: 1em;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card h3 {
+            margin-top: 0.5em;
+        }
+        .card p {
+            color: #666;
+        }
+        .card button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 0.5em 1em;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0.5em 0;
+            cursor: pointer;
+        }
+        .quantity-control {
+            display: none;
+        }
+        .add-to-cart, .quantity-control button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.add-to-cart:hover, .quantity-control button:hover {
+    background-color: var(--dark-blue);
+}
+        .quantity-control span {
+            padding: 0 0.5em;
+        }
+        #flash-message {
+    position: fixed;
+    top: 50px; /* Reduced from 70px */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    z-index: 3000;
+    display: none;
+}
+        #flash-message.success {
+            background-color: #4CAF50;
+        }
+        #flash-message.error {
+            background-color: #f44336;
+        }
+        #cart-icon {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: var(--light-blue);
+    color: var(--white);
+    padding: 0.5rem;
+    border-radius: 50%;
+        }
+        #cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        #cart-modal {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            transition: right 0.3s ease-in-out;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        #cart-modal.open {
+            right: 0;
+        }
+        #cart-modal.sliding-out {
+    right: -100%;
+}
+        #cart-modal h2 {
+            background-color: var(--primary-blue);
+            color: white;
+            margin: 0;
+            padding: 1em;
+        }
+        #cart-items {
+            color: var(--dark-blue);
+
+            list-style-type: none;
+            padding: 0;
+        }
+        #cart-items li {
+            padding: 0.5em 1em;
+            border-bottom: 1px solid #ddd;
+        }
+        #cart-total {
+            background-color: var(--pale-blue);
+    color: var(--dark-blue);
+    padding: 1rem;
+    font-weight: bold;
+        }
+        #close-cart {
+            position: absolute;
+            top: 0.5em;
+            right: 1em;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+        }
+        #confirm-order {
+    display: block;
+    width: 90%;
+    margin: 1em auto;
+    padding: 0.5em;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#confirm-order:hover {
+    background-color: var(--dark-blue);
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.discount-ribbon {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background-color: var(--light-blue);
+    color: var(--white);
+    padding: 5px 30px;
+    transform: rotate(45deg);
+    font-size: 0.8em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 150px;
+    text-align: center;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.discounted-price {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card img {
+    cursor: pointer;
+}
+
+#fullscreen-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 9999;
+}
+
+#preview-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#close-preview {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+}
+
+#prev-button {
+    left: 15px;
+}
+
+#next-button {
+    right: 15px;
+}
+
+#fullscreen-preview {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 9999;
+}
+
+#preview-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#close-preview {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+}
+
+#prev-button {
+    left: 15px;
+}
+
+#next-button {
+    right: 15px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 58, 138, 0.8); /* semi-transparent primary blue */
+}
+
+.modal-content {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.modal-buttons {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: var(--dark-blue);
+}
+
+#modal-yes {
+    background-color: #007bff;
+    color: white;
+}
+
+#modal-no {
+    background-color: #dc3545;
+    color: white;
+}
+
+#modal-yes:hover {
+    background-color: #0056b3;
+}
+
+#modal-no:hover {
+    background-color: #c82333;
+}
+.remove-item {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.remove-item:hover {
+    background-color: #ff1a1a;
+}
+#remove-item-yes {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#remove-item-yes:hover {
+    background-color: #dc2626;
+}
+
+#remove-item-no {
+    background-color: #4CAF50;
+    color: white;
+}
+.empty-cart-message {
+    font-style: italic;
+    color: var(--primary-blue);
+    text-align: center;
+    padding: 20px 0;
+}
+#scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+#scroll-to-top:hover {
+    background-color: var(--dark-blue);
+}
+
+#sticky-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.flash-message {
+    background-color: var(--light-blue);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Adjust main content to not be hidden by footer */
+body {
+    margin-bottom: 50px; /* Adjust this value based on your footer's height */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h4>GM General Stores</h4>
+        <div id="cart-icon">
+            🛒
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main id="products"></main>
+    <div id="fullscreen-preview">
+        <span id="close-preview">&times;</span>
+        <button id="prev-button" class="nav-button">&#10094;</button>
+        <button id="next-button" class="nav-button">&#10095;</button>
+        <div id="preview-content">
+            <img id="preview-image" src="" alt="Preview">
+        </div>
+    </div>
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Order</h2>
+            <p>Are you sure you would like to place the orders for the following items?</p>
+            <div id="modal-items"></div>
+            <div class="modal-buttons">
+                <button id="modal-yes">YES, CONFIRM!</button>
+                <button id="modal-no">NO, CANCEL!</button>
+            </div>
+        </div>
+    </div>
+    <div id="cart-modal">
+        <h2>Your Cart 🛒 <span id="close-cart">&times;</span></h2>
+        <ul id="cart-items"></ul>
+        <div id="cart-total" style="display: none;">Total: 0 Shs.</div>        <button id="confirm-order">CONFIRM ORDER</button>
+    </div>
+
+    <div id="remove-item-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Removal</h2>
+            <p>Are you sure you want to remove this item from your cart?</p>
+            <div class="modal-buttons">
+                <button id="remove-item-yes">Yes, remove it.</button>
+                <button id="remove-item-no">No, keep it.</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="flash-message"></div>
+    
+
+    <script>
+        
+        let itemToRemove = null;
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        
+        function generateOrderMessage() {
+    let message = "Hello, I would like to buy the following items:\n";
+    let itemNumber = 1;
+    Object.values(cart).forEach(item => {
+        message += `${itemNumber}. ${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}\n`;
+        itemNumber++;
+    });
+    message += `\n ${document.getElementById('cart-total').textContent}`;
+    return encodeURIComponent(message);
+}
+
+function showConfirmModal() {
+    const modal = document.getElementById('confirm-modal');
+    const modalItems = document.getElementById('modal-items');
+    modalItems.innerHTML = '';
+
+    Object.values(cart).forEach(item => {
+        const p = document.createElement('p');
+        p.textContent = `${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}`;
+        modalItems.appendChild(p);
+    });
+
+    modal.style.display = 'block';
+}
+
+function hideConfirmModal() {
+    document.getElementById('confirm-modal').style.display = 'none';
+}
+
+function proceedWithOrder() {
+    const phoneNumber = "+256757916929";
+    const message = generateOrderMessage();
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+    
+    // Close the confirm modal
+    hideConfirmModal();
+    
+    // Slide and close the cart modal
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.classList.add('sliding-out');
+    
+    // Wait for the animation to complete before opening WhatsApp and clearing the cart
+    setTimeout(() => {
+        cartModal.classList.remove('open', 'sliding-out');
+        window.open(whatsappURL, '_blank');
+        clearCart();
+    }, 500); // Adjust this timing to match your CSS animation duration
+}
+
+// Event listeners
+document.getElementById('confirm-order').addEventListener('click', showConfirmModal);
+document.getElementById('modal-yes').addEventListener('click', proceedWithOrder);
+document.getElementById('modal-no').addEventListener('click', hideConfirmModal);
+
+// Initialize the cart when the page loads
+window.addEventListener('load', initializeCart);
+
+
+const products = [
+    { id: 1, name: "Azam Home Baking Flour", price: 8000, discountPercentage: 20, images: ["Azam Home Baking Flour.jpg", "azam (1).jpg", "azam (2).jpg"] },
+    { id: 2, name: "Habari Salt 40pcs(Carton) - 500g", price: 24800, discountPercentage: 15, images: ["habari salt.jpg", "habaari (1).jpg", "habaari (2).jpg"] },
+    { id: 3, name: "Jamaa Soap Cream 1*10KG", price: 50000, discountPercentage: 10, images: ["jamaa.jpg", "jamaa (1).jpg", "jamaa (2).jpg"] },
+    { id: 4, name: "Kakira Sugar - 50Kg", price: 81000, discountPercentage: 5, images: ["kakira.jpg", "kakira (1).jpg", "kakira (2).jpg"] },
+    { id: 5, name: "Magic Detergent (sachet)", price: 7000, discountPercentage: 25, images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"] },
+    { id: 6, name: "Roki Roki Vegetable Cooking Oil - 3L", price: 23100, discountPercentage: 12, images: ["roki 3 litres.jpg", "roki 2l (1).jpg", "roki 2l (2).jpg"] },
+    { id: 7, name: "Roki Roki Vegetable Cooking Oil - 5L", price: 37300, discountPercentage: 18, images: ["roki 5 litres.jpg", "roki 5l (1).jpg", "roki 5l (2).jpg"] },
+    { id: 8, name: "Royco Mchuzi Mix Chicken, 200g - Yellow", price: 12000, discountPercentage: 8, images: ["royco blue.jpg", "", ""] },
+    { id: 9, name: "Royco Mchuzi Mix Beef 500g", price: 23000, discountPercentage: 22, images: ["royco green.jpg", "beef royco (1).jpg", "beef royco (2).jpg"] },
+    { id: 10, name: "Supreme Flour Home Baking Flour - 2kg", price: 6800, discountPercentage: 30, images: ["supreme.jpg", "supreme (1).jpg", "supreme (2).jpg"] },
+];
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-UG', { style: 'currency', currency: 'UGX', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
+        }
+
+        let currentProductId;
+let currentImageIndex;
+
+function openPreview(productId, imageIndex) {
+    const product = products.find(p => p.id === productId);
+    currentProductId = productId;
+    currentImageIndex = imageIndex;
+    
+    const previewImage = document.getElementById('preview-image');
+    previewImage.src = product.images[imageIndex];
+    
+    document.getElementById('fullscreen-preview').style.display = 'block';
+}
+
+function closePreview() {
+    document.getElementById('fullscreen-preview').style.display = 'none';
+}
+
+function navigatePreview(direction) {
+    const product = products.find(p => p.id === currentProductId);
+    currentImageIndex += direction;
+    
+    if (currentImageIndex < 0) {
+        currentImageIndex = product.images.length - 1;
+    } else if (currentImageIndex >= product.images.length) {
+        currentImageIndex = 0;
+    }
+    
+    document.getElementById('preview-image').src = product.images[currentImageIndex];
+}
+
+document.getElementById('close-preview').addEventListener('click', closePreview);
+document.getElementById('prev-button').addEventListener('click', () => navigatePreview(-1));
+document.getElementById('next-button').addEventListener('click', () => navigatePreview(1));
+
+        function renderProducts(productsToRender) {
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = '';
+
+    productsToRender.forEach(product => {
+        const discountedPrice = product.price * (1 - product.discountPercentage / 100);
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="discount-ribbon">${product.discountPercentage}% OFF</div>
+            <img src="${product.images[0]}" alt="${product.name}" onclick="openPreview(${product.id}, 0)">
+            <h3>${product.name}</h3>
+            <p class="original-price">${formatCurrency(product.price)}</p>
+            <p class="discounted-price">${formatCurrency(discountedPrice)}</p>
+            <button class="add-to-cart" id="add-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
+            <div class="quantity-control" id="quantity-${product.id}">
+                <button onclick="decrementQuantity(${product.id})">-</button>
+                <span>0</span>
+                <button onclick="incrementQuantity(${product.id})">+</button>
+            </div>
+        `;
+        productsContainer.appendChild(card);
+    });
+    updateAllQuantityDisplays();
+
+}
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function clearCart() {
+    cart = {};
+    saveCart();
+    updateCartCount();
+    updateCartModal();
+    renderProducts(products);
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const discountedPrice = product.price * (1 - product.discountPercentage / 100);
+    if (!cart[productId]) {
+        cart[productId] = { ...product, price: discountedPrice, quantity: 1 };
+        updateQuantityDisplay(productId, 1);
+        showFlashMessage(`${product.name} added to cart successfully`, 'success');
+    }
+    updateCartCount();
+    updateCartModal();
+    saveCart();
+}
+
+function incrementQuantity(productId) {
+    if (!cart[productId]) {
+        addToCart(productId);
+    } else {
+        cart[productId].quantity++;
+        updateQuantityDisplay(productId, cart[productId].quantity);
+        showFlashMessage(`Increased quantity of ${cart[productId].name}`, 'success');
+        updateCartCount();
+        updateCartModal();
+        saveCart();
+    }
+}
+
+function decrementQuantity(productId) {
+    if (cart[productId]) {
+        cart[productId].quantity--;
+        if (cart[productId].quantity === 0) {
+            delete cart[productId];
+            updateQuantityDisplay(productId, 0);
+            showFlashMessage(`${products.find(p => p.id === productId).name} removed from cart`, 'error');
+        } else {
+            updateQuantityDisplay(productId, cart[productId].quantity);
+            showFlashMessage(`Decreased quantity of ${cart[productId].name}`, 'error');
+        }
+        updateCartCount();
+        updateCartModal();
+        saveCart();
+    }
+}
+
+        function updateQuantityDisplay(productId, quantity) {
+            const addButton = document.getElementById(`add-${productId}`);
+            const quantityControl = document.getElementById(`quantity-${productId}`);
+            const quantitySpan = quantityControl.querySelector('span');
+
+            if (quantity > 0) {
+                addButton.style.display = 'none';
+                quantityControl.style.display = 'inline-block';
+                quantitySpan.textContent = quantity;
+            } else {
+                addButton.style.display = 'inline-block';
+                quantityControl.style.display = 'none';
+            }
+        }
+
+        function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+}
+
+function updateCartModal() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const confirmOrderButton = document.getElementById('confirm-order');
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    if (Object.keys(cart).length === 0) {
+        // Cart is empty
+        cartItems.innerHTML = '<li class="empty-cart-message"><em>Your cart is empty. Please add some items to start shopping.</em></li>';
+        cartTotal.style.display = 'none'; // Hide the total
+        confirmOrderButton.style.display = 'none';
+    } else {
+        // Cart has items
+        Object.values(cart).forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}
+                <button class="remove-item" data-id="${item.id}">Remove</button>
+            `;
+            cartItems.appendChild(li);
+            total += item.price * item.quantity;
+        });
+
+        cartTotal.textContent = `Total: ${formatCurrency(total)}`;
+        cartTotal.style.display = 'block'; // Show the total
+        confirmOrderButton.style.display = 'block';
+
+        // Add event listeners for remove buttons
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                showRemoveItemModal(this.getAttribute('data-id'));
+            });
+        });
+    }
+}
+
+function showRemoveItemModal(productId) {
+    itemToRemove = parseInt(productId);
+    document.getElementById('remove-item-modal').style.display = 'block';
+}
+
+function hideRemoveItemModal() {
+    document.getElementById('remove-item-modal').style.display = 'none';
+}
+
+function removeItemFromCart() {
+    if (itemToRemove && cart[itemToRemove]) {
+        delete cart[itemToRemove];
+        saveCart();
+        updateCartCount();
+        updateCartModal(); // This will now show the empty cart message if needed
+        renderProducts(products);
+        showFlashMessage(`Item removed from cart`, 'error');
+    }
+    hideRemoveItemModal();
+    itemToRemove = null;
+}
+
+// Event listeners for the remove item confirmation modal
+document.getElementById('remove-item-yes').addEventListener('click', removeItemFromCart);
+document.getElementById('remove-item-no').addEventListener('click', hideRemoveItemModal);
+
+        function filterProducts() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+
+    const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm)
+    );
+
+    renderProducts(filteredProducts);
+    updateAllQuantityDisplays();
+}
+
+function updateAllQuantityDisplays() {
+    products.forEach(product => {
+        const quantity = cart[product.id] ? cart[product.id].quantity : 0;
+        updateQuantityDisplay(product.id, quantity);
+    });
+}
+// Call this function when the page loads
+function initializeCart() {
+    updateCartCount();
+    updateCartModal();
+    renderProducts(products);
+}
+
+        function showFlashMessage(message, type) {
+            const flashMessage = document.getElementById('flash-message');
+            flashMessage.textContent = message;
+            flashMessage.className = type;
+            flashMessage.style.display = 'block';
+            setTimeout(() => {
+                flashMessage.style.display = 'none';
+            }, 3000);
+        }
+
+   
+
+        document.getElementById('cart-icon').addEventListener('click', () => {
+    document.getElementById('cart-modal').classList.add('open');
+});
+
+document.getElementById('close-cart').addEventListener('click', () => {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.classList.add('sliding-out');
+    setTimeout(() => {
+        cartModal.classList.remove('open', 'sliding-out');
+    }, 500);
+});
+
+        renderProducts(products);
+
+        // Scroll to top functionality
+        function initScrollToTop() {
+    const scrollToTopButton = document.getElementById("scroll-to-top");
+    
+    if (scrollToTopButton) {
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopButton.style.display = "block";
+            } else {
+                scrollToTopButton.style.display = "none";
+            }
+        };
+
+        scrollToTopButton.onclick = function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+    }
+}
+
+function scrollToTop() {
+    const scrollToTop = window.setInterval(function() {
+        const pos = window.pageYOffset;
+        if (pos > 0) {
+            window.scrollTo(0, pos - 20); // Adjust the '20' for faster/slower scrolling
+        } else {
+            window.clearInterval(scrollToTop);
+        }
+    }, 16);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollToTop();
+    // You can also call other initialization functions here
+    initializeCart();
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+});
+
+// Set current year in footer
+document.getElementById("current-year").textContent = new Date().getFullYear();
+
+window.addEventListener('load', function() {
+    initializeCart();
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+});
+    </script>
+    <!-- Add this button somewhere in your body, typically at the end -->
+<button id="scroll-to-top" title="Go to top">↑</button>
+
+<!-- Add this footer just before the closing </body> tag -->
+<footer id="sticky-footer">
+    <p>  © GM General Stores  <span id="current-year"></span><BR> 0757916929 / 0789645759</p>
+</footer>
+</body>
+</html>
