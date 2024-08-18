@@ -627,94 +627,285 @@ window.addEventListener('load', initializeCart);
 
 
 const products = [
+{
+        id: 11,
+        name: "Beans (Nambaale)",
+        basePrice: 5000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["beans.png", "beans (3).jpg", "beans (5).jpg"]
+    },
+    {
+        id: 12,
+        name: "Rice (Super)",
+        basePrice: 28000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [5, 10, 25, 50, 100],
+        discountPercentage: 0,
+        images: ["blue rice.png", "blue  rice.png"]
+    },
+    {
+        id: 13,
+        name: "Cow Peas",
+        basePrice: 8000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["cow peas.png", "cow peas (2).jpg", "cow peas (4).jpg", ]
+    },
+    {
+        id: 14,
+        name: "Rice (Super Extra)",
+        basePrice: 90000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [5, 10, 25, 50, 100],
+        discountPercentage: 0,
+        images: ["green rice.png", "green rice (1).jpg", "rice yellow.png", "yellow rice.jpg", "yellow rice.png"]
+    },
+    {
+        id: 15,
+        name: "Agroben Long Grain Rice",
+        basePrice: 110000,
+        baseQuantity: 25,
+        unit: "kg",
+        quantityOptions: [5, 10, 25, 50, 100],
+        discountPercentage: 0,
+        images: ["groben rice.png","groben (1).jpg" ]
+    },
+    {
+        id: 16,
+        name: "Groundnuts",
+        basePrice: 6500,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["ground nuts.png", "ground nuts (1).jpg", "ground nuts (2).jpg", ]
+    },
+    {
+        id: 17,
+        name: "Kakira Sugar (Light Brown)",
+        basePrice: 38000,
+        baseQuantity: 10,
+        unit: "kg",
+        quantityOptions: [10, 25, 50, 100],
+        discountPercentage: 0,
+        images: ["kakira.png", "kakira (2).jpg", "kakira (1).jpg"]
+    },
+    {
+        id: 18,
+        name: "King Fortified Maize Flour",
+        basePrice: 10000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [5, 10, 25, 50 ],
+        discountPercentage: 0,
+        images: ["king 5kg.png", "king size.png", "king 10kg.png", "king flour (1).jpg", "king flour (2).jpg"]
+    },
+    {
+        id: 19,
+        name: "Beans (Masavu)",
+        basePrice: 5500,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["local beans.png", "local beans (2).jpg", "local beans (3).jpg"]
+    },
+    {
+        id: 20,
+        name: "sorghum",
+        basePrice: 4000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["millet.png", "millet (7).jpg", "millet (3).jpg", "millet (7).jpg"]
+    },
+    {
+        id: 21,
+        name: "Green Beans",
+        basePrice: 5500,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["peas.png", "peas (7).jpg", "peas (6).jpg", "peas (1).jpg", "peas (3).jpg"]
+    },
+    {
+        id: 22,
+        name: "Sanyuka Maize Flour",
+        basePrice: 10000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [5, 10, 25, 50],
+        discountPercentage: 0,
+        images: ["sanyuka.png", "sanyuka (2).jpg"]
+    },
+    {
+        id: 23,
+        name: "Sea Salt",
+        basePrice: 4000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["sea salt.png", "sea salt.jpg", "sea salt (1).jpg"]
+    },
+    {
+        id: 25,
+        name: "Kiroko Beans",
+        basePrice: 6000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["soya beans.png", "soya beans.jpg"]
+    },
+    {
+        id: 26,
+        name: "Bushera",
+        basePrice: 4000,
+        baseQuantity: 5,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["soya.png","soyya.jpg", "soya (5).jpg", "soya (4).jpg", "soya (1).jpg"]
+    },
+    {
+        id: 27,
+        name: "Tea Leaves",
+        basePrice: 10000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["tea.png", "tea (1).jpg"]
+    },
+    {
+        id: 28,
+        name: "White Beans",
+        basePrice: 5000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["white beans.png", "white peas.jpg"]
+    },
+    {
+        id: 29,
+        name: "Yellow Beans",
+        basePrice: 5000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
+        images: ["yellow beans.png", "yellow beans (2).jpg", "yellow beans (1).jpg"]
+    },
     {
         id: 1,
         name: "Azam Home Baking Flour",
-        basePrice: 8000,
+        basePrice: 7000,
         baseQuantity: 1,
         unit: "kg",
         quantityOptions: [1, 2, 5, 10],
-        discountPercentage: 20,
+        discountPercentage: 0,
         images: ["Azam Home Baking Flour.jpg", "azam (1).jpg", "azam (2).jpg"]
     },
     {
         id: 2,
         name: "Habari Salt",
-        basePrice: 24800,
-        baseQuantity: 40,
+        basePrice: 800,
+        baseQuantity: 1,
         unit: "pcs",
-        quantityOptions: [40, 80, 120, 160],
-        discountPercentage: 15,
+        quantityOptions: [1, 2, 3, 4, 5, 10, 20, 30, 40],
+        discountPercentage: 0,
         images: ["habari salt.jpg", "habaari (1).jpg", "habaari (2).jpg"]
     },
     {
         id: 3,
         name: "Jamaa Soap Cream",
-        basePrice: 50000,
-        baseQuantity: 10,
+        basePrice: 5500,
+        baseQuantity: 1,
         unit: "kg",
-        quantityOptions: [10, 20, 30, 40],
-        discountPercentage: 10,
+        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        discountPercentage: 0,
         images: ["jamaa.jpg", "jamaa (1).jpg", "jamaa (2).jpg"]
     },
     {
-        id: 4,
-        name: "Kakira Sugar",
-        basePrice: 81000,
-        baseQuantity: 50,
-        unit: "kg",
-        quantityOptions: [50, 100, 150, 200],
-        discountPercentage: 5,
-        images: ["kakira.jpg", "kakira (1).jpg", "kakira (2).jpg"]
-    },
+        id: 5,
+        name: "Magic Detergent (Small)",
+        basePrice: 4000,
+        baseQuantity: 1,
+        unit: "bucket",
+        quantityOptions: [1, 5, 10, 20],
+        discountPercentage: 0,
+        images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"]
+    }, 
     {
         id: 5,
-        name: "Magic Detergent",
-        basePrice: 7000,
+        name: "Magic Detergent (Medium)",
+        basePrice: 6000,
         baseQuantity: 1,
-        unit: "sachet",
+        unit: "bucket",
         quantityOptions: [1, 5, 10, 20],
-        discountPercentage: 25,
+        discountPercentage: 0,
         images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"]
     },
     {
+        id: 5,
+        name: "Magic Detergent (Large)",
+        basePrice: 12000,
+        baseQuantity: 1,
+        unit: "bucket",
+        quantityOptions: [1, 5, 10, 20],
+        discountPercentage: 0,
+        images: ["magic bucket (1).jpg", "magic bucket (2).jpg", "magic bucket (3).jpg"]
+    },
+    
+    {
         id: 6,
         name: "Roki Roki Vegetable Cooking Oil",
-        basePrice: 23100,
+        basePrice: 28000,
         baseQuantity: 3,
         unit: "L",
         quantityOptions: [3, 6, 9, 12],
-        discountPercentage: 12,
+        discountPercentage: 0,
         images: ["roki 3 litres.jpg", "roki 2l (1).jpg", "roki 2l (2).jpg"]
     },
     {
         id: 7,
         name: "Roki Roki Vegetable Cooking Oil",
-        basePrice: 37300,
+        basePrice: 38000,
         baseQuantity: 5,
         unit: "L",
         quantityOptions: [5, 10, 15, 20],
-        discountPercentage: 18,
+        discountPercentage: 0,
         images: ["roki 5 litres.jpg", "roki 5l (1).jpg", "roki 5l (2).jpg"]
     },
     {
         id: 8,
         name: "Royco Mchuzi Mix Chicken",
-        basePrice: 12000,
+        basePrice: 5000,
         baseQuantity: 200,
         unit: "g",
         quantityOptions: [200, 400, 600, 800],
-        discountPercentage: 8,
+        discountPercentage: 0,
         images: ["royco blue.jpg", "", ""]
     },
     {
         id: 9,
         name: "Royco Mchuzi Mix Beef",
-        basePrice: 23000,
+        basePrice: 10000,
         baseQuantity: 500,
         unit: "g",
         quantityOptions: [500, 1000, 1500, 2000],
-        discountPercentage: 22,
+        discountPercentage: 0,
         images: ["royco green.jpg", "beef royco (1).jpg", "beef royco (2).jpg"]
     },
     {
@@ -724,9 +915,9 @@ const products = [
         baseQuantity: 2,
         unit: "kg",
         quantityOptions: [2, 4, 6, 8],
-        discountPercentage: 30,
+        discountPercentage: 0,
         images: ["supreme.jpg", "supreme (1).jpg", "supreme (2).jpg"]
-    },
+    }
 ];
         function formatCurrency(amount) {
             return new Intl.NumberFormat('en-UG', { style: 'currency', currency: 'UGX', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
