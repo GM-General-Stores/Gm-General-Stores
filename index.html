@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://fresh-teacher.github.io/Gm/IMG-20240813-WA0051.jpg" />
     <title>GM General Stores</title>
     <link rel="icon" href="IMG-20240813-WA0051.jpg" type="image/x-icon">
-</head>
+
     <style>
         :root {
     --primary-blue: #1e3a8a;
@@ -509,6 +509,7 @@ nav {
 body {
     margin-bottom: 50px; /* Adjust this value based on your footer's height */
 }
+
     </style>
 </head>
 <body>
@@ -626,18 +627,107 @@ window.addEventListener('load', initializeCart);
 
 
 const products = [
-    { id: 1, name: "Azam Home Baking Flour", price: 8000, discountPercentage: 20, images: ["https://gmgeneralstores.vercel.app/Azam Home Baking Flour.jpg", "https://gmgeneralstores.vercel.app/azam (1).jpg", "https://gmgeneralstores.vercel.app/azam (2).jpg"] },
-    { id: 2, name: "Habari Salt 40pcs(Carton) - 500g", price: 24800, discountPercentage: 15, images: ["https://gmgeneralstores.vercel.app/habari salt.jpg", "habaari (1).jpg", "https://gmgeneralstores.vercel.app/habaari (2).jpg"] },
-    { id: 3, name: "Jamaa Soap Cream 1*10KG", price: 50000, discountPercentage: 10, images: ["https://gmgeneralstores.vercel.app/jamaa.jpg", "https://gmgeneralstores.vercel.app/jamaa (1).jpg", "https://gmgeneralstores.vercel.app/jamaa (2).jpg"] },
-    { id: 4, name: "Kakira Sugar - 50Kg", price: 81000, discountPercentage: 5, images: ["https://gmgeneralstores.vercel.app/kakira.jpg", "https://gmgeneralstores.vercel.app/kakira (1).jpg", "https://gmgeneralstores.vercel.app/kakira (2).jpg"] },
-    { id: 5, name: "Magic Detergent (sachet)", price: 7000, discountPercentage: 25, images: ["https://gmgeneralstores.vercel.app/magic.jpg", "https://gmgeneralstores.vercel.app/magic (1).jpg", "https://gmgeneralstores.vercel.app/magic (2).jpg"] },
-    { id: 6, name: "Roki Roki Vegetable Cooking Oil - 3L", price: 23100, discountPercentage: 12, images: ["https://gmgeneralstores.vercel.app/roki 3 litres.jpg", "https://gmgeneralstores.vercel.app/roki 2l (1).jpg", "https://gmgeneralstores.vercel.app/roki 2l (2).jpg"] },
-    { id: 7, name: "Roki Roki Vegetable Cooking Oil - 5L", price: 37300, discountPercentage: 18, images: ["https://gmgeneralstores.vercel.app/roki 5 litres.jpg", "https://gmgeneralstores.vercel.app/roki 5l (1).jpg", "https://gmgeneralstores.vercel.app/roki 5l (2).jpg"] },
-    { id: 8, name: "Royco Mchuzi Mix Chicken, 200g - Yellow", price: 12000, discountPercentage: 8, images: ["https://gmgeneralstores.vercel.app/royco blue.jpg", "https://gmgeneralstores.vercel.app/beef royco (1).jpg", "https://gmgeneralstores.vercel.app/beef royco (2).jpg"] },
-    { id: 9, name: "Royco Mchuzi Mix Beef 500g", price: 23000, discountPercentage: 22, images: ["https://gmgeneralstores.vercel.app/royco green.jpg", "https://gmgeneralstores.vercel.app/beef royco (1).jpg", "https://gmgeneralstores.vercel.app/beef royco (2).jpg"] },
-    { id: 10, name: "Supreme Flour Home Baking Flour - 2kg", price: 6800, discountPercentage: 30, images: ["https://gmgeneralstores.vercel.app/supreme.jpg", "https://gmgeneralstores.vercel.app/supreme (1).jpg", "https://gmgeneralstores.vercel.app/supreme (2).jpg"] },
+    {
+        id: 1,
+        name: "Azam Home Baking Flour",
+        basePrice: 8000,
+        baseQuantity: 1,
+        unit: "kg",
+        quantityOptions: [1, 2, 5, 10],
+        discountPercentage: 20,
+        images: ["Azam Home Baking Flour.jpg", "azam (1).jpg", "azam (2).jpg"]
+    },
+    {
+        id: 2,
+        name: "Habari Salt",
+        basePrice: 24800,
+        baseQuantity: 40,
+        unit: "pcs",
+        quantityOptions: [40, 80, 120, 160],
+        discountPercentage: 15,
+        images: ["habari salt.jpg", "habaari (1).jpg", "habaari (2).jpg"]
+    },
+    {
+        id: 3,
+        name: "Jamaa Soap Cream",
+        basePrice: 50000,
+        baseQuantity: 10,
+        unit: "kg",
+        quantityOptions: [10, 20, 30, 40],
+        discountPercentage: 10,
+        images: ["jamaa.jpg", "jamaa (1).jpg", "jamaa (2).jpg"]
+    },
+    {
+        id: 4,
+        name: "Kakira Sugar",
+        basePrice: 81000,
+        baseQuantity: 50,
+        unit: "kg",
+        quantityOptions: [50, 100, 150, 200],
+        discountPercentage: 5,
+        images: ["kakira.jpg", "kakira (1).jpg", "kakira (2).jpg"]
+    },
+    {
+        id: 5,
+        name: "Magic Detergent",
+        basePrice: 7000,
+        baseQuantity: 1,
+        unit: "sachet",
+        quantityOptions: [1, 5, 10, 20],
+        discountPercentage: 25,
+        images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"]
+    },
+    {
+        id: 6,
+        name: "Roki Roki Vegetable Cooking Oil",
+        basePrice: 23100,
+        baseQuantity: 3,
+        unit: "L",
+        quantityOptions: [3, 6, 9, 12],
+        discountPercentage: 12,
+        images: ["roki 3 litres.jpg", "roki 2l (1).jpg", "roki 2l (2).jpg"]
+    },
+    {
+        id: 7,
+        name: "Roki Roki Vegetable Cooking Oil",
+        basePrice: 37300,
+        baseQuantity: 5,
+        unit: "L",
+        quantityOptions: [5, 10, 15, 20],
+        discountPercentage: 18,
+        images: ["roki 5 litres.jpg", "roki 5l (1).jpg", "roki 5l (2).jpg"]
+    },
+    {
+        id: 8,
+        name: "Royco Mchuzi Mix Chicken",
+        basePrice: 12000,
+        baseQuantity: 200,
+        unit: "g",
+        quantityOptions: [200, 400, 600, 800],
+        discountPercentage: 8,
+        images: ["royco blue.jpg", "", ""]
+    },
+    {
+        id: 9,
+        name: "Royco Mchuzi Mix Beef",
+        basePrice: 23000,
+        baseQuantity: 500,
+        unit: "g",
+        quantityOptions: [500, 1000, 1500, 2000],
+        discountPercentage: 22,
+        images: ["royco green.jpg", "beef royco (1).jpg", "beef royco (2).jpg"]
+    },
+    {
+        id: 10,
+        name: "Supreme Flour Home Baking Flour",
+        basePrice: 6800,
+        baseQuantity: 2,
+        unit: "kg",
+        quantityOptions: [2, 4, 6, 8],
+        discountPercentage: 30,
+        images: ["supreme.jpg", "supreme (1).jpg", "supreme (2).jpg"]
+    },
 ];
-
         function formatCurrency(amount) {
             return new Intl.NumberFormat('en-UG', { style: 'currency', currency: 'UGX', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
         }
@@ -677,20 +767,32 @@ document.getElementById('close-preview').addEventListener('click', closePreview)
 document.getElementById('prev-button').addEventListener('click', () => navigatePreview(-1));
 document.getElementById('next-button').addEventListener('click', () => navigatePreview(1));
 
-        function renderProducts(productsToRender) {
+function renderProducts(productsToRender) {
     const productsContainer = document.getElementById('products');
     productsContainer.innerHTML = '';
 
     productsToRender.forEach(product => {
-        const discountedPrice = product.price * (1 - product.discountPercentage / 100);
         const card = document.createElement('div');
         card.className = 'card';
+        
+        let quantityOptionsHTML = '';
+        if (product.quantityOptions) {
+            quantityOptionsHTML = `
+                <select class="quantity-select" onchange="updateProductDetails(${product.id}, this.value)">
+                    ${product.quantityOptions.map(q => `<option value="${q}">${q}${product.unit}</option>`).join('')}
+                </select>
+            `;
+        }
+
+        const discountedPrice = product.basePrice * (1 - product.discountPercentage / 100);
+        
         card.innerHTML = `
             <div class="discount-ribbon">${product.discountPercentage}% OFF</div>
             <img src="${product.images[0]}" alt="${product.name}" onclick="openPreview(${product.id}, 0)">
-            <h3>${product.name}</h3>
-            <p class="original-price">${formatCurrency(product.price)}</p>
-            <p class="discounted-price">${formatCurrency(discountedPrice)}</p>
+            <h3 id="name-${product.id}">${product.name} - ${product.baseQuantity}${product.unit}</h3>
+            <p class="original-price" id="original-price-${product.id}">${formatCurrency(product.basePrice)}</p>
+            <p class="discounted-price" id="discounted-price-${product.id}">${formatCurrency(discountedPrice)}</p>
+            ${quantityOptionsHTML}
             <button class="add-to-cart" id="add-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
             <div class="quantity-control" id="quantity-${product.id}">
                 <button onclick="decrementQuantity(${product.id})">-</button>
@@ -701,6 +803,46 @@ document.getElementById('next-button').addEventListener('click', () => navigateP
         productsContainer.appendChild(card);
     });
     updateAllQuantityDisplays();
+}
+
+function updateProductDetails(productId, newQuantity) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const quantityRatio = newQuantity / product.baseQuantity;
+    const newPrice = product.basePrice * quantityRatio;
+    const discountedPrice = newPrice * (1 - product.discountPercentage / 100);
+
+    // Update the displayed product details
+    document.getElementById(`name-${productId}`).textContent = `${product.name} - ${newQuantity}${product.unit}`;
+    document.getElementById(`original-price-${productId}`).textContent = formatCurrency(newPrice);
+    document.getElementById(`discounted-price-${productId}`).textContent = formatCurrency(discountedPrice);
+
+    // Update the "Add to Cart" button and quantity control
+    const addButton = document.getElementById(`add-${productId}`);
+    const quantityControl = document.getElementById(`quantity-${productId}`);
+
+    // Check if this specific product-quantity combination is in the cart
+    const cartItemId = `${productId}-${newQuantity}`;
+    if (cart[cartItemId]) {
+        // If it's in the cart, show the quantity control with the current quantity
+        addButton.style.display = 'none';
+        quantityControl.style.display = 'inline-block';
+        quantityControl.querySelector('span').textContent = cart[cartItemId].quantity;
+    } else {
+        // If it's not in the cart, show the "Add to Cart" button
+        addButton.style.display = 'inline-block';
+        quantityControl.style.display = 'none';
+    }
+
+    // Update the onclick handler for the "Add to Cart" button
+    addButton.onclick = () => addToCart(productId, parseInt(newQuantity));
+
+    // Update the onclick handlers for the quantity control buttons
+    const decrementButton = quantityControl.querySelector('button:first-child');
+    const incrementButton = quantityControl.querySelector('button:last-child');
+    decrementButton.onclick = () => decrementQuantity(productId, parseInt(newQuantity));
+    incrementButton.onclick = () => incrementQuantity(productId, parseInt(newQuantity));
 
 }
 
@@ -718,11 +860,29 @@ function clearCart() {
 
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const discountedPrice = product.price * (1 - product.discountPercentage / 100);
-    if (!cart[productId]) {
-        cart[productId] = { ...product, price: discountedPrice, quantity: 1 };
-        updateQuantityDisplay(productId, 1);
-        showFlashMessage(`${product.name} added to cart successfully`, 'success');
+    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
+    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : product.baseQuantity;
+    const quantityRatio = selectedQuantity / product.baseQuantity;
+    const newPrice = product.basePrice * quantityRatio;
+    const discountedPrice = newPrice * (1 - product.discountPercentage / 100);
+
+    const cartItemId = `${productId}-${selectedQuantity}`;
+
+    if (!cart[cartItemId]) {
+        cart[cartItemId] = {
+            ...product,
+            cartItemId: cartItemId,
+            name: `${product.name} - ${selectedQuantity}${product.unit}`,
+            price: discountedPrice,
+            quantity: 1,
+            selectedQuantity: selectedQuantity
+        };
+        updateQuantityDisplay(cartItemId, 1);
+        showFlashMessage(`${cart[cartItemId].name} added to cart successfully`, 'success');
+    } else {
+        cart[cartItemId].quantity++;
+        updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
+        showFlashMessage(`Increased quantity of ${cart[cartItemId].name}`, 'success');
     }
     updateCartCount();
     updateCartModal();
@@ -730,12 +890,16 @@ function addToCart(productId) {
 }
 
 function incrementQuantity(productId) {
-    if (!cart[productId]) {
+    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
+    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : products.find(p => p.id === productId).baseQuantity;
+    const cartItemId = `${productId}-${selectedQuantity}`;
+
+    if (!cart[cartItemId]) {
         addToCart(productId);
     } else {
-        cart[productId].quantity++;
-        updateQuantityDisplay(productId, cart[productId].quantity);
-        showFlashMessage(`Increased quantity of ${cart[productId].name}`, 'success');
+        cart[cartItemId].quantity++;
+        updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
+        showFlashMessage(`Increased quantity of ${cart[cartItemId].name}`, 'success');
         updateCartCount();
         updateCartModal();
         saveCart();
@@ -743,15 +907,19 @@ function incrementQuantity(productId) {
 }
 
 function decrementQuantity(productId) {
-    if (cart[productId]) {
-        cart[productId].quantity--;
-        if (cart[productId].quantity === 0) {
-            delete cart[productId];
-            updateQuantityDisplay(productId, 0);
-            showFlashMessage(`${products.find(p => p.id === productId).name} removed from cart`, 'error');
+    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
+    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : products.find(p => p.id === productId).baseQuantity;
+    const cartItemId = `${productId}-${selectedQuantity}`;
+
+    if (cart[cartItemId]) {
+        cart[cartItemId].quantity--;
+        if (cart[cartItemId].quantity === 0) {
+            delete cart[cartItemId];
+            updateQuantityDisplay(cartItemId, 0);
+            showFlashMessage(`${cart[cartItemId].name} removed from cart`, 'error');
         } else {
-            updateQuantityDisplay(productId, cart[productId].quantity);
-            showFlashMessage(`Decreased quantity of ${cart[productId].name}`, 'error');
+            updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
+            showFlashMessage(`Decreased quantity of ${cart[cartItemId].name}`, 'error');
         }
         updateCartCount();
         updateCartModal();
@@ -759,20 +927,35 @@ function decrementQuantity(productId) {
     }
 }
 
-        function updateQuantityDisplay(productId, quantity) {
-            const addButton = document.getElementById(`add-${productId}`);
-            const quantityControl = document.getElementById(`quantity-${productId}`);
-            const quantitySpan = quantityControl.querySelector('span');
+function updateQuantityDisplay(cartItemId, quantity) {
+    let productId, selectedQuantity;
 
-            if (quantity > 0) {
-                addButton.style.display = 'none';
-                quantityControl.style.display = 'inline-block';
-                quantitySpan.textContent = quantity;
-            } else {
-                addButton.style.display = 'inline-block';
-                quantityControl.style.display = 'none';
-            }
-        }
+    if (typeof cartItemId === 'string' && cartItemId.includes('-')) {
+        [productId, selectedQuantity] = cartItemId.split('-');
+    } else {
+        // If cartItemId is not in the expected format, assume it's just the productId
+        productId = cartItemId;
+    }
+
+    const addButton = document.getElementById(`add-${productId}`);
+    const quantityControl = document.getElementById(`quantity-${productId}`);
+    
+    if (!addButton || !quantityControl) {
+        console.warn(`Elements not found for product ID: ${productId}`);
+        return;
+    }
+
+    const quantitySpan = quantityControl.querySelector('span');
+
+    if (quantity > 0) {
+        addButton.style.display = 'none';
+        quantityControl.style.display = 'inline-block';
+        quantitySpan.textContent = quantity;
+    } else {
+        addButton.style.display = 'inline-block';
+        quantityControl.style.display = 'none';
+    }
+}
 
         function updateCartCount() {
     const cartCount = document.getElementById('cart-count');
@@ -788,27 +971,25 @@ function updateCartModal() {
     let total = 0;
 
     if (Object.keys(cart).length === 0) {
-        // Cart is empty
         cartItems.innerHTML = '<li class="empty-cart-message"><em>Your cart is empty. Please add some items to start shopping.</em></li>';
-        cartTotal.style.display = 'none'; // Hide the total
+        cartTotal.style.display = 'none';
         confirmOrderButton.style.display = 'none';
     } else {
-        // Cart has items
-        Object.values(cart).forEach(item => {
+        Object.entries(cart).forEach(([cartItemId, item]) => {
             const li = document.createElement('li');
             li.innerHTML = `
                 ${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}
-                <button class="remove-item" data-id="${item.id}">Remove</button>
+                <button class="remove-item" data-id="${cartItemId}">Remove</button>
             `;
             cartItems.appendChild(li);
             total += item.price * item.quantity;
         });
 
         cartTotal.textContent = `Total: ${formatCurrency(total)}`;
-        cartTotal.style.display = 'block'; // Show the total
+        cartTotal.style.display = 'block';
         confirmOrderButton.style.display = 'block';
 
-        // Add event listeners for remove buttons
+        // Attach event listeners to remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 showRemoveItemModal(this.getAttribute('data-id'));
@@ -817,25 +998,34 @@ function updateCartModal() {
     }
 }
 
-function showRemoveItemModal(productId) {
-    itemToRemove = parseInt(productId);
+function showRemoveItemModal(cartItemId) {
+    itemToRemove = cartItemId;
     document.getElementById('remove-item-modal').style.display = 'block';
 }
 
 function hideRemoveItemModal() {
-    document.getElementById('remove-item-modal').style.display = 'none';
+    console.log("hideRemoveItemModal called");
+    const modal = document.getElementById('remove-item-modal');
+    console.log("Modal element:", modal);
+    modal.style.display = 'none';
+    console.log("Modal display set to none");
 }
 
 function removeItemFromCart() {
+    console.log("removeItemFromCart called");
+
     if (itemToRemove && cart[itemToRemove]) {
         delete cart[itemToRemove];
         saveCart();
         updateCartCount();
-        updateCartModal(); // This will now show the empty cart message if needed
+        updateCartModal();
         renderProducts(products);
         showFlashMessage(`Item removed from cart`, 'error');
     }
+    hideRemoveItemModal(); // Make sure this line is present
+    console.log("About to hide modal");
     hideRemoveItemModal();
+    console.log("Modal should be hidden now");
     itemToRemove = null;
 }
 
@@ -855,11 +1045,11 @@ document.getElementById('remove-item-no').addEventListener('click', hideRemoveIt
 }
 
 function updateAllQuantityDisplays() {
-    products.forEach(product => {
-        const quantity = cart[product.id] ? cart[product.id].quantity : 0;
-        updateQuantityDisplay(product.id, quantity);
+    Object.entries(cart).forEach(([cartItemId, item]) => {
+        updateQuantityDisplay(cartItemId, item.quantity);
     });
 }
+
 // Call this function when the page loads
 function initializeCart() {
     updateCartCount();
