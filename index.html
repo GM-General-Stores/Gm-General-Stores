@@ -651,7 +651,7 @@ const products = [
         id: 13,
         name: "Cow Peas",
         basePrice: 8000,
-        baseQuantity: 5,
+        baseQuantity: 1,
         unit: "kg",
         quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         discountPercentage: 0,
@@ -771,7 +771,7 @@ const products = [
         id: 26,
         name: "Bushera",
         basePrice: 4000,
-        baseQuantity: 5,
+        baseQuantity: 1,
         unit: "kg",
         quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         discountPercentage: 0,
@@ -836,26 +836,6 @@ const products = [
         quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         discountPercentage: 0,
         images: ["jamaa.jpg", "jamaa (1).jpg", "jamaa (2).jpg"]
-    },
-    {
-        id: 5,
-        name: "Magic Detergent (Small)",
-        basePrice: 4000,
-        baseQuantity: 1,
-        unit: "bucket",
-        quantityOptions: [1, 5, 10, 20],
-        discountPercentage: 0,
-        images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"]
-    }, 
-    {
-        id: 5,
-        name: "Magic Detergent (Medium)",
-        basePrice: 6000,
-        baseQuantity: 1,
-        unit: "bucket",
-        quantityOptions: [1, 5, 10, 20],
-        discountPercentage: 0,
-        images: ["magic.jpg", "magic (1).jpg", "magic (2).jpg"]
     },
     {
         id: 5,
@@ -926,6 +906,62 @@ const products = [
         let currentProductId;
 let currentImageIndex;
 
+function applySpecificDiscounts() {
+    const discounts = {
+        1: 5,   // Azam Home Baking Flour: 5% off
+        2: 7,   // Habari Salt: 7% off
+        3: 3,   // Jamaa Soap Cream: 3% off
+        5: 8,   // Magic Detergent (Large): 8% off
+        6: 10,  // Roki Roki Vegetable Cooking Oil (3L): 10% off
+        7: 6,   // Roki Roki Vegetable Cooking Oil (5L): 6% off
+        8: 2,   // Royco Mchuzi Mix Chicken: 2% off
+        9: 4,   // Royco Mchuzi Mix Beef: 4% off
+        10: 9,  // Supreme Flour Home Baking Flour: 9% off
+        11: 3,  // Beans (Nambaale): 3% off
+        12: 8,  // Rice (Super): 8% off
+        13: 5,  // Cow Peas: 5% off
+        14: 7,  // Rice (Super Extra): 7% off
+        15: 6,  // Agroben Long Grain Rice: 6% off
+        16: 1,  // Groundnuts: 1% off
+        17: 4,  // Kakira Sugar (Light Brown): 4% off
+        18: 10, // King Fortified Maize Flour: 10% off
+        19: 2,  // Beans (Masavu): 2% off
+        20: 5,  // Sorghum: 5% off
+        21: 9,  // Green Beans: 9% off
+        22: 3,  // Sanyuka Maize Flour: 3% off
+        23: 2,  // Sea Salt: 2% off
+        25: 8,  // Kiroko Beans: 8% off
+        26: 9,  // Bushera: 9% off
+        27: 6,  // Tea Leaves: 6% off
+        28: 4,  // White Beans: 4% off
+        29: 7,  // Yellow Beans: 7% off
+        30: 5,  // (New product ID): 5% off
+        31: 1,  // (New product ID): 1% off
+        32: 3   // (New product ID): 3% off
+    };
+
+    products.forEach(product => {
+        if (discounts.hasOwnProperty(product.id)) {
+            const discountPercentage = discounts[product.id];
+            
+            // Calculate the "original" price before discount
+            const originalPrice = Math.round(product.basePrice / (1 - discountPercentage / 100));
+
+            // Update the product object
+            product.discountPercentage = discountPercentage;
+            product.originalPrice = originalPrice;
+            // The basePrice remains the same, which will be our "discounted" price
+        } else {
+            // For products without a specific discount, set discount to 0
+            product.discountPercentage = 0;
+            product.originalPrice = product.basePrice;
+        }
+    });
+}
+
+// Call this function before rendering products
+applySpecificDiscounts();
+
 function openPreview(productId, imageIndex) {
     const product = products.find(p => p.id === productId);
     currentProductId = productId;
@@ -975,13 +1011,20 @@ function renderProducts(productsToRender) {
             `;
         }
 
-        const discountedPrice = product.basePrice * (1 - product.discountPercentage / 100);
-        
+        // The discountedPrice is now the basePrice
+        const discountedPrice = product.basePrice;
+        // The originalPrice is calculated based on the discount percentage
+        const originalPrice = product.originalPrice || product.basePrice;
+
+        const discountRibbon = product.discountPercentage > 0 
+            ? `<div class="discount-ribbon">${product.discountPercentage}% OFF</div>`
+            : '';
+
         card.innerHTML = `
-            <div class="discount-ribbon">${product.discountPercentage}% OFF</div>
+            ${discountRibbon}
             <img src="${product.images[0]}" alt="${product.name}" onclick="openPreview(${product.id}, 0)">
             <h3 id="name-${product.id}">${product.name} - ${product.baseQuantity}${product.unit}</h3>
-            <p class="original-price" id="original-price-${product.id}">${formatCurrency(product.basePrice)}</p>
+            <p class="original-price" id="original-price-${product.id}">${formatCurrency(originalPrice)}</p>
             <p class="discounted-price" id="discounted-price-${product.id}">${formatCurrency(discountedPrice)}</p>
             ${quantityOptionsHTML}
             <button class="add-to-cart" id="add-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
