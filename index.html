@@ -16,6 +16,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <meta property="og:site_name" content="GM General Stores" />
     <meta property="og:image" content="https://fresh-teacher.github.io/Gm/IMG-20240813-WA0051.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>GM General Stores</title>
     <link rel="icon" href="IMG-20240813-WA0051.jpg" type="image/x-icon">
 
@@ -509,7 +510,32 @@ nav {
 body {
     margin-bottom: 50px; /* Adjust this value based on your footer's height */
 }
+#read-more {
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#read-more:hover {
+    background-color: #0056b3;
+}
+
+#read-more i {
+    margin-right: 5px;
+}
     </style>
 </head>
 <body>
@@ -1349,6 +1375,9 @@ function scrollToTop() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+        // Add this line:
+        initReadMoreLink();
+
     initScrollToTop();
     // You can also call other initialization functions here
     initializeCart();
@@ -1362,13 +1391,31 @@ window.addEventListener('load', function() {
     initializeCart();
     document.getElementById("current-year").textContent = new Date().getFullYear();
 });
+
+// Add this new function:
+function initReadMoreLink() {
+    const readMoreLink = document.getElementById("read-more");
+    
+    if (readMoreLink) {
+        readMoreLink.onclick = function(e) {
+            e.preventDefault();
+            window.location.href = 'about.html';
+        };
+    }
+}
     </script>
     <!-- Add this button somewhere in your body, typically at the end -->
 <button id="scroll-to-top" title="Go to top">↑</button>
+<a href="about.html" id="read-more" title="Read More">
+    <i class="fas fa-info-circle"></i>
+</a>
+
+
+
 
 <!-- Add this footer just before the closing </body> tag -->
 <footer id="sticky-footer">
-    <p>  © GM General Stores  <span id="current-year"></span><BR> 0757916929 / 0789645759</p>
+    <p>  © GM General Stores  <BR> 0757916929</p>
 </footer>
 </body>
 </html>
