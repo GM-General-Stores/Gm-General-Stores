@@ -93,6 +93,63 @@
     opacity: 0;
   }
 }
+.btn-start-shopping {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  overflow: visible;
+}
+
+.btn-start-shopping:hover {
+  background-color: #0056b3;
+}
+
+.btn-start-shopping span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-start-shopping::before,
+.btn-start-shopping::after,
+.btn-start-shopping span::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-color: rgba(0, 123, 255, 0.3);
+  border-radius: 7px;
+  z-index: -1;
+  animation: shoppingRipple 2s infinite;
+}
+
+.btn-start-shopping::after {
+  animation-delay: 0.5s;
+}
+
+.btn-start-shopping span::before {
+  animation-delay: 1s;
+}
+
+@keyframes shoppingRipple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 </style>
 
 <body>
@@ -126,12 +183,22 @@
 <section id="hero">
   <div class="hero-container" data-aos="fade-up">
     <h1></h1>
-    <h2>Your Go-To Store 🏪</h2>
-    <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mt-4">
+          <a href="index.html" id="start-shopping" class="btn-start-shopping">
+            <span>Start Shopping 🛒</span>
+          </a>
+        </div>
+      </div>
+    </div><br>
     <a href="GM App.apk" id="install-app" class="btn-install-app">
-      <span><i class="fas fa-download"></i> Install our App</span>
-    </a>
+      <span> Install our App <i class="bx bxl-android"></i></span>
+  </a><br>
+  <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+  
   </div>
+  
 </section><!-- End Hero -->
   <main id="main">
 
@@ -447,6 +514,7 @@
         </div>
 
       </div>
+
     </section><!-- End Portfolio Section -->
 
 <!-- ======= About Section ======= -->
