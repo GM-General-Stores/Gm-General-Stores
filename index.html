@@ -512,16 +512,25 @@ body {
 }
 #read-more {
   position: fixed;
-  bottom: 20px;
+  bottom: 7px;
   right: 20px;
-  overflow: hidden;
-  display: inline-block;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50%;
   z-index: 9999;
+  overflow: visible;
+}
+
+#read-more i {
+  position: relative;
+  z-index: 2;
+  font-size: 24px;
 }
 
 #read-more::before,
@@ -529,31 +538,31 @@ body {
 #read-more span::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 40%;
-  transform: scale(0);
-  animation: ripple 4s infinite;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-color: rgba(0, 123, 255, 0.3);
+  border-radius: 50%;
+  z-index: 1;
+  animation: readMoreRipple 2s infinite;
 }
 
 #read-more::after {
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 #read-more span::before {
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
-@keyframes ripple {
+@keyframes readMoreRipple {
   0% {
-    transform: scale(0);
+    transform: scale(1);
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.5);
     opacity: 0;
   }
 }

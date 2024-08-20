@@ -36,7 +36,64 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+<style>
+  .btn-install-app {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  overflow: visible;
+}
 
+.btn-install-app:hover {
+  background-color: #45a049;
+}
+
+.btn-install-app span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-install-app::before,
+.btn-install-app::after,
+.btn-install-app span::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-color: rgba(76, 175, 80, 0.3);
+  border-radius: 7px;
+  z-index: -1;
+  animation: ripple 2s infinite;
+}
+
+.btn-install-app::after {
+  animation-delay: 0.5s;
+}
+
+.btn-install-app span::before {
+  animation-delay: 1s;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
 
 <body>
 
@@ -66,14 +123,16 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <h1></h1>
-      <h2>Your Go-To Store 🏪</h2>
-      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
-    </div>
-  </section><!-- End Hero -->
-
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1></h1>
+    <h2>Your Go-To Store 🏪</h2>
+    <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+    <a href="GM App.apk" id="install-app" class="btn-install-app">
+      <span><i class="fas fa-download"></i> Install our App</span>
+    </a>
+  </div>
+</section><!-- End Hero -->
   <main id="main">
 
 <!-- ======= About Section ======= -->
