@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEFI Photo Gallery</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Include Medium-zoom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/2.0.3/medium-zoom.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4">CEFI Photo Gallery</h1>
+    <div id="photos" class="row mt-4"></div>
+    <button id="load-more" class="btn btn-primary mt-4">Load More</button>
+  </div>
+
+  <!-- Include jQuery, Bootstrap JS, and Medium-zoom JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/2.0.3/medium-zoom.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      const photosContainer = $('#photos');
+      const loadMoreButton = $('#load-more');
+      const photosPerLoad = 9;
+      let currentPage = 1;
+
+      function generatePhotoURL(photoNumber) {
+        return `assets/img/portfolio/IMG-20240620-WA${String(photoNumber).padStart(4, '0')}.jpg`;
+      }
+
+      function loadPhotos(page) {
+        const startIndex = (page - 1) * photosPerLoad;
+        const endIndex = startIndex + photosPerLoad;
+
+        for (let i = startIndex; i < endIndex; i++) {
+          const photoSrc = generatePhotoURL(i + 1); // Adding 1 to start from 1 instead of 0
+          const photoElement = `
+            <div class="col-md-4 mb-4">
+              <a href="${photoSrc}" data-zoom>
+                <img src="${photoSrc}" class="img-fluid">
+              </a>
+            </div>`;
+          photosContainer.append(photoElement);
+        }
+      }
+
+      loadPhotos(currentPage);
+
+      loadMoreButton.click(function() {
+        currentPage++;
+        loadPhotos(currentPage);
+        // Assuming you have 105 photos (from WA0001.jpg to WA0105.jpg)
+        if (currentPage * photosPerLoad >= 105) {
+          loadMoreButton.hide();
+        }
+      });
+
+      // Initialize Medium-zoom
+      const zoom = mediumZoom('[data-zoom]', {
+        margin: 24,
+        background: '#000',
+        scrollOffset: 0,
+        container: '#photos',
+        template: `
+          <div class="medium-zoom-overlay">
+            <div class="medium-zoom-container">
+              <button class="medium-zoom-close">&times;</button>
+              <img src="" alt="">
+            </div>
+          </div>
+        `
+      });
+    });
+  </script>
+</body>
+</html>
