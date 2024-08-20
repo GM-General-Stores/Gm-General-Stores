@@ -2,561 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Welcome to GM General Stores, your trusted supplier of high-quality Rice Products and a variety of other food items.">
-    <meta name="keywords" content="GM General Stores, Rice Products, food items, grocery store, quality food supplies">
-    <meta name="author" content="Your Name">
-    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    <link data-n-head="ssr" rel="manifest" href="/manifest.json" data-hid="manifest">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta property="og:site_name" content="GM General Stores" />
-    <meta property="og:image" content="https://fresh-teacher.github.io/Gm/IMG-20240813-WA0051.jpg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>GM General Stores</title>
-    <link rel="icon" href="IMG-20240813-WA0051.jpg" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="GM General Stores - Your Trusted Source for Quality Rice Products and Food Items">
+<meta name="keywords" content="GM General Stores, Rice Products, Food Items, Grocery Store, Quality Food Supplies, Customer Satisfaction, Trusted Supplier">
+<meta name="author" content="GM General Stores">
+<link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+<link rel="manifest" href="/manifest.json" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta property="og:site_name" content="GM General Stores" />
+<meta property="og:image" content="https://fresh-teacher.github.io/Gm/IMG-20240813-WA0051.jpg" />
 
-    <style>
-        :root {
-    --primary-blue: #1e3a8a;
-    --light-blue: #3b82f6;
-    --dark-blue: #1e40af;
-    --pale-blue: #dbeafe;
-    --white: #ffffff;
-}
+  <title>About Us - GM General Stores</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--pale-blue), var(--light-blue));
-    color: var(--dark-blue);
-        }
-        header {
-            background-color: var(--primary-blue);
-    color: var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  <!-- Favicons -->
+  <link href="logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    text-align: center;
-    padding: 0.5em; /* Reduced from 1em */
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-nav {
-    background-color: #444;
-    padding: 0.5em;
-    margin-top: 10px; /* Reduced from 60px */
-    padding-bottom: 1em; /* Added padding at the bottom */
-}
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-
-        main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 1em;
-    margin-top: 80px; /* Increased to account for the navbar and filter */
-}
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 1em;
-            padding: 1em;
-            width: 200px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .card img {
-            max-width: 100%;
-            height: auto;
-        }
-        .card h3 {
-            margin-top: 0.5em;
-        }
-        .card p {
-            color: #666;
-        }
-        .card button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 0.5em 1em;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 0.5em 0;
-            cursor: pointer;
-        }
-        .quantity-control {
-            display: none;
-        }
-        .add-to-cart, .quantity-control button {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.add-to-cart:hover, .quantity-control button:hover {
-    background-color: var(--dark-blue);
-}
-        .quantity-control span {
-            padding: 0 0.5em;
-        }
-        #flash-message {
-    position: fixed;
-    top: 50px; /* Reduced from 70px */
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    padding: 1em;
-    border-radius: 5px;
-    z-index: 3000;
-    display: none;
-}
-        #flash-message.success {
-            background-color: #4CAF50;
-        }
-        #flash-message.error {
-            background-color: #f44336;
-        }
-        #cart-icon {
-            position: absolute;
-            top: 1em;
-            right: 1em;
-            font-size: 24px;
-            cursor: pointer;
-            background-color: var(--light-blue);
-    color: var(--white);
-    padding: 0.5rem;
-    border-radius: 50%;
-        }
-        #cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 12px;
-        }
-        #cart-modal {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100%;
-            background-color: var(--white);
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            transition: right 0.3s ease-in-out;
-            z-index: 2000;
-            overflow-y: auto;
-        }
-        #cart-modal.open {
-            right: 0;
-        }
-        #cart-modal.sliding-out {
-    right: -100%;
-}
-        #cart-modal h2 {
-            background-color: var(--primary-blue);
-            color: white;
-            margin: 0;
-            padding: 1em;
-        }
-        #cart-items {
-            color: var(--dark-blue);
-
-            list-style-type: none;
-            padding: 0;
-        }
-        #cart-items li {
-            padding: 0.5em 1em;
-            border-bottom: 1px solid #ddd;
-        }
-        #cart-total {
-            background-color: var(--pale-blue);
-    color: var(--dark-blue);
-    padding: 1rem;
-    font-weight: bold;
-        }
-        #close-cart {
-            position: absolute;
-            top: 0.5em;
-            right: 1em;
-            font-size: 1.5em;
-            cursor: pointer;
-            color: white;
-        }
-        #confirm-order {
-    display: block;
-    width: 90%;
-    margin: 1em auto;
-    padding: 0.5em;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-#confirm-order:hover {
-    background-color: var(--dark-blue);
-}
-
-.card {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.discount-ribbon {
-    position: absolute;
-    top: 10px;
-    right: -30px;
-    background-color: var(--light-blue);
-    color: var(--white);
-    padding: 5px 30px;
-    transform: rotate(45deg);
-    font-size: 0.8em;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    width: 150px;
-    text-align: center;
-}
-
-.original-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 0.9em;
-}
-
-.discounted-price {
-    color: #ff4444;
-    font-weight: bold;
-    font-size: 1.1em;
-}
-.card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.card img {
-    cursor: pointer;
-}
-
-#fullscreen-preview {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    z-index: 9999;
-}
-
-#preview-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-}
-
-#preview-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-#close-preview {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    padding: 16px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-}
-
-#prev-button {
-    left: 15px;
-}
-
-#next-button {
-    right: 15px;
-}
-
-#fullscreen-preview {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    z-index: 9999;
-}
-
-#preview-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-}
-
-#preview-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-#close-preview {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    padding: 16px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-}
-
-#prev-button {
-    left: 15px;
-}
-
-#next-button {
-    right: 15px;
-}
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 58, 138, 0.8); /* semi-transparent primary blue */
-}
-
-.modal-content {
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-}
-
-.modal-buttons {
-    text-align: right;
-    margin-top: 20px;
-}
-
-.modal-buttons button {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.modal-buttons button:hover {
-    background-color: var(--dark-blue);
-}
-
-#modal-yes {
-    background-color: #007bff;
-    color: white;
-}
-
-#modal-no {
-    background-color: #dc3545;
-    color: white;
-}
-
-#modal-yes:hover {
-    background-color: #0056b3;
-}
-
-#modal-no:hover {
-    background-color: #c82333;
-}
-.remove-item {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.remove-item:hover {
-    background-color: #ff1a1a;
-}
-#remove-item-yes {
-    background-color: #ff4d4d;
-    color: white;
-}
-
-#remove-item-yes:hover {
-    background-color: #dc2626;
-}
-
-#remove-item-no {
-    background-color: #4CAF50;
-    color: white;
-}
-.empty-cart-message {
-    font-style: italic;
-    color: var(--primary-blue);
-    text-align: center;
-    padding: 20px 0;
-}
-#scroll-to-top {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 18px;
-}
-
-#scroll-to-top:hover {
-    background-color: var(--dark-blue);
-}
-
-#sticky-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-
-.flash-message {
-    background-color: var(--light-blue);
-    color: var(--white);
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-}
-
-/* Adjust main content to not be hidden by footer */
-body {
-    margin-bottom: 50px; /* Adjust this value based on your footer's height */
-}
-#read-more {
-  position: fixed;
-  bottom: 7px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background-color: #007bff;
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+<style>
+  .btn-install-app {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4CAF50;
   color: white;
   text-decoration: none;
-  border-radius: 50%;
-  z-index: 9999;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
   overflow: visible;
 }
 
-#read-more i {
-  position: relative;
-  z-index: 2;
-  font-size: 24px;
+.btn-install-app:hover {
+  background-color: #45a049;
 }
 
-#read-more::before,
-#read-more::after,
-#read-more span::before {
+.btn-install-app span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-install-app::before,
+.btn-install-app::after,
+.btn-install-app span::before {
   content: '';
   position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background-color: rgba(0, 123, 255, 0.3);
-  border-radius: 50%;
-  z-index: 1;
-  animation: readMoreRipple 2s infinite;
+  background-color: rgba(76, 175, 80, 0.3);
+  border-radius: 7px;
+  z-index: -1;
+  animation: ripple 2s infinite;
 }
 
-#read-more::after {
+.btn-install-app::after {
   animation-delay: 0.5s;
 }
 
-#read-more span::before {
+.btn-install-app span::before {
   animation-delay: 1s;
 }
 
-@keyframes readMoreRipple {
+@keyframes ripple {
   0% {
     transform: scale(1);
     opacity: 1;
@@ -566,874 +93,646 @@ body {
     opacity: 0;
   }
 }
-    </style>
-</head>
+.btn-start-shopping {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  overflow: visible;
+}
+
+.btn-start-shopping:hover {
+  background-color: #0056b3;
+}
+
+.btn-start-shopping span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-start-shopping::before,
+.btn-start-shopping::after,
+.btn-start-shopping span::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-color: rgba(0, 123, 255, 0.3);
+  border-radius: 7px;
+  z-index: -1;
+  animation: shoppingRipple 2s infinite;
+}
+
+.btn-start-shopping::after {
+  animation-delay: 0.5s;
+}
+
+.btn-start-shopping span::before {
+  animation-delay: 1s;
+}
+
+@keyframes shoppingRipple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+</style>
+
 <body>
-    <header>
-        <h4>GM General Stores</h4>
-        <div id="cart-icon">
-            🛒
-            <span id="cart-count">0</span>
-        </div>
-    </header>
 
-    <main id="products"></main>
-    <div id="fullscreen-preview">
-        <span id="close-preview">&times;</span>
-        <button id="prev-button" class="nav-button">&#10094;</button>
-        <button id="next-button" class="nav-button">&#10095;</button>
-        <div id="preview-content">
-            <img id="preview-image" src="" alt="Preview">
-        </div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+<!--         <h1 class="text-light"><a href="index.html"><span>Squadfree</span></a></h1>
+        <! Uncomment below if you prefer to use an image logo -->
+         <a href="index.html"><img src="assets/img/portfolio/logo (2).png" alt="" class="img-fluid"></a>
+      </div> 
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="#team">Administrators</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
-    <div id="confirm-modal" class="modal">
-        <div class="modal-content">
-            <h2>Confirm Order</h2>
-            <p>Are you sure you would like to place the orders for the following items?</p>
-            <div id="modal-items"></div>
-            <div class="modal-buttons">
-                <button id="modal-yes">YES, CONFIRM!</button>
-                <button id="modal-no">NO, CANCEL!</button>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mt-4">
+          <a href="index.html" id="start-shopping" class="btn-start-shopping">
+            <span>Start Shopping 🛒</span>
+          </a>
+        </div>
+      </div>
+    </div><br>
+    <a href="GM App.apk" id="install-app" class="btn-install-app">
+      <span> Install our App <i class="bx bxl-android"></i></span>
+  </a><br>
+  <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+  
+  </div>
+  
+</section><!-- End Hero -->
+  <main id="main">
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
+        <div class="content">
+          <h3>About Our Organisation</h3>
+          <img src="Photo from Fresh Teacher.png" alt="CEFI Image" class="img-fluid mb-3">
+          <p class="text-justify">
+              <p>
+                GM General Stores is a leading supplier of premium rice products and a wide range of quality food items. Established with a commitment to excellence, we have grown to become a trusted name in the grocery industry, known for our dedication to providing our customers with the freshest and finest products.
+                <p></p>
+
+                <br>    <br>Since our founding, GM General Stores has consistently strived to meet the diverse needs of our customers by offering a carefully curated selection of food products. Our emphasis on quality ensures that every product on our shelves meets the highest standards, providing our customers with the best value for their money. Whether it's sourcing the best rice varieties or stocking essential food items, we go the extra mile to ensure that our customers have access to the best the market has to offer.
+                <p></p>
+                
+                <br>At GM General Stores, we believe in building strong relationships with our customers and the communities we serve. Our commitment to customer satisfaction drives us to continually improve and expand our product offerings, ensuring that we remain your go-to destination for all your grocery needs. We are proud to contribute to the well-being of our community by making high-quality food products accessible to everyone. Our dedication to excellence is reflected in our ongoing efforts to provide exceptional service and top-notch products to our valued customers.
+                <p></p>                          
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
+        <div class="content">
+          <p class="text-justify">
+                
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4>MISSION</h4>
+                  <p>GM General Stores is committed to providing our customers with high-quality rice products and a wide range of essential food items. Our mission is to ensure that every household has access to premium, nutritious food at affordable prices, fostering a healthier community and supporting local food security.
+                  
+                  </p></div><br>
+                  <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                    <i class="bx bx-images"></i>
+                    <h4>VISION</h4>
+                  <p>To be the leading provider of quality rice and food products, recognized for our dedication to customer satisfaction, community well-being, and sustainable business practices. We envision a world where every family can enjoy nutritious meals made from the finest ingredients.
+                  
+                  </p></div><br>
+                  <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <i class="bx bx-receipt"></i>
+                    <h4>OUR AIM</h4>
+                    <p>Our aim at GM General Stores is to continually serve our customers with the best rice and food items available. We strive to build lasting relationships with our customers by delivering exceptional service, ensuring product quality, and maintaining affordability. We are dedicated to supporting the communities we serve by providing reliable access to essential food products.
+                  
+                  </p></div><br>
+                  <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                    <i class="bx bx-shield"></i>
+                    <h4>OUR FOCUS</h4>
+                  <p>At GM General Stores, our focus is on sourcing and delivering the highest quality rice and food items to meet the diverse needs of our customers. We are committed to sustainability and ethical practices in our supply chain, ensuring that our products are not only the best in quality but also responsibly sourced. Customer satisfaction is at the heart of everything we do, and we work tirelessly to exceed expectations in every aspect of our business.
+                  
+                  </p></div><br>
+                  <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>OUR HUMBLE REQUEST 🙏</h4>
+                  <p>GM General Stores values the support of our loyal customers and the community. We invite you to continue supporting us by choosing GM General Stores for your rice and food product needs. Your patronage helps us maintain our commitment to quality, affordability, and community well-being. Whether you are a long-time customer or new to our store, your trust in us enables us to keep providing the best products and service. Together, we can ensure that everyone has access to the quality food they deserve.
+                  
+                  </p></div>
+                  </div>
+                  <!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Core Values Section ======= -->
+<section id="services" class="services">
+  <div class="container">
+
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <h2>OUR CORE VALUES</h2>
+      <p>Below are the core values that define GM General Stores:</p>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up">
+          <div class="icon"><i class="bx bx-heart"></i></div>
+          <h4 class="title"><a href="">Quality</a></h4>
+          <p class="description">We are committed to providing only the highest quality rice and food products. Quality is at the heart of everything we do, ensuring that our customers always receive the best products available in the market.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="bx bx-user-check"></i></div>
+          <h4 class="title"><a href="">Customer Satisfaction</a></h4>
+          <p class="description">Our customers are our top priority. We strive to exceed expectations by offering exceptional service and products that meet the diverse needs of our community. Your satisfaction is our success.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><i class="bx bx-group"></i></div>
+          <h4 class="title"><a href="">Integrity</a></h4>
+          <p class="description">Integrity guides every aspect of our business. We conduct our operations with honesty, transparency, and a strong commitment to ethical practices, building trust with our customers, suppliers, and community.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="bx bx-leaf"></i></div>
+          <h4 class="title"><a href="">Sustainability</a></h4>
+          <p class="description">We are dedicated to sustainable business practices that protect the environment and support the well-being of our community. Our commitment to sustainability ensures that our products are sourced responsibly and with care for the future.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Core Values Section -->   
+
+<!-- ======= Key Objectives Section ======= -->
+<section id="services" class="services">
+  <div class="container">
+
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <h2>KEY OBJECTIVES</h2>
+      <p>Below are the key objectives that drive our business:</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up">
+          <div class="icon"><i class="bx bx-rocket"></i></div>
+          <h4 class="title"><a href="">Product Excellence</a></h4>
+          <p class="description">Continuously improve our product offerings to ensure the highest level of excellence. We aim to set the standard in the market for quality, freshness, and value, delivering products that our customers can trust.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="bx bx-user"></i></div>
+          <h4 class="title"><a href="">Community Support</a></h4>
+          <p class="description">Support the well-being of our community by offering accessible and affordable food products. We are committed to giving back through initiatives that strengthen local food security and promote healthy living.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="bx bx-brain"></i></div>
+          <h4 class="title"><a href="">Innovation</a></h4>
+          <p class="description">Embrace innovation to improve our business processes and enhance the customer experience. From supply chain management to customer service, we seek innovative solutions that drive efficiency and satisfaction.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="bx bx-globe"></i></div>
+          <h4 class="title"><a href="">Global Standards</a></h4>
+          <p class="description">Adhere to global standards of food safety and quality. We are committed to maintaining rigorous standards that ensure our products meet the highest levels of safety, health, and quality for our customers.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Key Objectives Section -->
+
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts  section-bg">
+      <div class="container">
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="38702" data-purecounter-duration="5" class="purecounter"></span>
+              <p><strong>Happy Clients</strong> </p>
             </div>
-        </div>
-    </div>
-    <div id="cart-modal">
-        <h2>Your Cart 🛒 <span id="close-cart">&times;</span></h2>
-        <ul id="cart-items"></ul>
-        <div id="cart-total" style="display: none;">Total: 0 Shs.</div>        <button id="confirm-order">CONFIRM ORDER</button>
-    </div>
+          </div>
 
-    <div id="remove-item-modal" class="modal">
-        <div class="modal-content">
-            <h2>Confirm Removal</h2>
-            <p>Are you sure you want to remove this item from your cart?</p>
-            <div class="modal-buttons">
-                <button id="remove-item-yes">Yes, remove it.</button>
-                <button id="remove-item-no">No, keep it.</button>
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="4" class="purecounter"></span>
+                <p><strong>Food Products  </strong></p>
             </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="3" class="purecounter"></span>
+              <p><strong>Working Days</strong></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Affiliate Companies</strong></p>
+            </div>
+          </div>
+
         </div>
-    </div>
 
-    <div id="flash-message"></div>
-    
+      </div>
+    </section><!-- End Counts Section -->
 
-    <script>
-        
-        let itemToRemove = null;
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        <div class="text-center">
+          <h3>Call To Action</h3>
+          <p> If you would like to support us, contact us now!</p>
+          <a class="cta-btn" href="wtai://wp/mc;+256757916929">Call To Action</a>
+        </div>
 
-        
-        function generateOrderMessage() {
-    let message = "Hello, I would like to buy the following items:\n";
-    let itemNumber = 1;
-    Object.values(cart).forEach(item => {
-        message += `${itemNumber}. ${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}\n`;
-        itemNumber++;
-    });
-    message += `\n ${document.getElementById('cart-total').textContent}`;
-    return encodeURIComponent(message);
-}
+      </div>
+    </section><!-- End Cta Section -->
 
-function showConfirmModal() {
-    const modal = document.getElementById('confirm-modal');
-    const modalItems = document.getElementById('modal-items');
-    modalItems.innerHTML = '';
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
 
-    Object.values(cart).forEach(item => {
-        const p = document.createElement('p');
-        p.textContent = `${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}`;
-        modalItems.appendChild(p);
-    });
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Gallery</h2>
+          <p>Here are some of the photos taken at our school</p>
+        </div>
 
-    modal.style.display = 'block';
-}
+        <div class="row portfolio-container" data-aos="fade-up">
 
-function hideConfirmModal() {
-    document.getElementById('confirm-modal').style.display = 'none';
-}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="millet (3).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="millet (3).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="millet (3).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-function proceedWithOrder() {
-    const phoneNumber = "+256757916929";
-    const message = generateOrderMessage();
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-    
-    // Close the confirm modal
-    hideConfirmModal();
-    
-    // Slide and close the cart modal
-    const cartModal = document.getElementById('cart-modal');
-    cartModal.classList.add('sliding-out');
-    
-    // Wait for the animation to complete before opening WhatsApp and clearing the cart
-    setTimeout(() => {
-        cartModal.classList.remove('open', 'sliding-out');
-        window.open(whatsappURL, '_blank');
-        clearCart();
-    }, 500); // Adjust this timing to match your CSS animation duration
-}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="green rice (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="green rice (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="green rice (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-// Event listeners
-document.getElementById('confirm-order').addEventListener('click', showConfirmModal);
-document.getElementById('modal-yes').addEventListener('click', proceedWithOrder);
-document.getElementById('modal-no').addEventListener('click', hideConfirmModal);
+         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="king flour (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="king flour (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="king flour (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-// Initialize the cart when the page loads
-window.addEventListener('load', initializeCart);
+         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="beans (3).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="beans (3).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="beans (3).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="groben (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="groben (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="groben (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-const products = [
-{
-        id: 11,
-        name: "Beans (Nambaale)",
-        basePrice: 5000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["beans.png", "beans (3).jpg", "beans (5).jpg"]
-    },
-    {
-        id: 12,
-        name: "Rice (Super)",
-        basePrice: 28000,
-        baseQuantity: 5,
-        unit: "kg",
-        quantityOptions: [5, 10, 25, 50, 100],
-        discountPercentage: 0,
-        images: ["blue rice.png", "blue  rice.png"]
-    },
-    {
-        id: 13,
-        name: "Cow Peas",
-        basePrice: 8000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["cow peas.png", "cow peas (2).jpg", "cow peas (4).jpg", ]
-    },
-    {
-        id: 14,
-        name: "Rice (Super Extra)",
-        basePrice: 90000,
-        baseQuantity: 5,
-        unit: "kg",
-        quantityOptions: [5, 10, 25, 50, 100],
-        discountPercentage: 0,
-        images: ["green rice.png", "green rice (1).jpg", "rice yellow.png", "yellow rice.jpg", "yellow rice.png"]
-    },
-    {
-        id: 15,
-        name: "Agroben Long Grain Rice",
-        basePrice: 110000,
-        baseQuantity: 25,
-        unit: "kg",
-        quantityOptions: [5, 10, 25, 50, 100],
-        discountPercentage: 0,
-        images: ["groben rice.png","groben (1).jpg" ]
-    },
-    {
-        id: 16,
-        name: "Groundnuts",
-        basePrice: 6500,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["ground nuts.png", "ground nuts (1).jpg", "ground nuts (2).jpg", ]
-    },
-    {
-        id: 17,
-        name: "Kakira Sugar (Light Brown)",
-        basePrice: 38000,
-        baseQuantity: 10,
-        unit: "kg",
-        quantityOptions: [10, 25, 50, 100],
-        discountPercentage: 0,
-        images: ["kakira.png", "kakira (2).jpg", "kakira (1).jpg"]
-    },
-    {
-        id: 18,
-        name: "King Fortified Maize Flour",
-        basePrice: 10000,
-        baseQuantity: 5,
-        unit: "kg",
-        quantityOptions: [5, 10, 25, 50 ],
-        discountPercentage: 0,
-        images: ["king 5kg.png", "king size.png", "king 10kg.png", "king flour (1).jpg", "king flour (2).jpg"]
-    },
-    {
-        id: 19,
-        name: "Beans (Masavu)",
-        basePrice: 5500,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["local beans.png", "local beans (2).jpg", "local beans (3).jpg"]
-    },
-    {
-        id: 20,
-        name: "sorghum",
-        basePrice: 4000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["millet.png", "millet (7).jpg", "millet (3).jpg", "millet (7).jpg"]
-    },
-    {
-        id: 21,
-        name: "Green Beans",
-        basePrice: 5500,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["peas.png", "peas (7).jpg", "peas (6).jpg", "peas (1).jpg", "peas (3).jpg"]
-    },
-    {
-        id: 22,
-        name: "Sanyuka Maize Flour",
-        basePrice: 10000,
-        baseQuantity: 5,
-        unit: "kg",
-        quantityOptions: [5, 10, 25, 50],
-        discountPercentage: 0,
-        images: ["sanyuka.png", "sanyuka (2).jpg"]
-    },
-    {
-        id: 23,
-        name: "Sea Salt",
-        basePrice: 4000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["sea salt.png", "sea salt.jpg", "sea salt (1).jpg"]
-    },
-    {
-        id: 25,
-        name: "Kiroko Beans",
-        basePrice: 6000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["soya beans.png", "soya beans.jpg"]
-    },
-    {
-        id: 26,
-        name: "Bushera",
-        basePrice: 4000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["soya.png","soyya.jpg", "soya (5).jpg", "soya (4).jpg", "soya (1).jpg"]
-    },
-    {
-        id: 27,
-        name: "Tea Leaves",
-        basePrice: 10000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["tea.png", "tea (1).jpg"]
-    },
-    {
-        id: 28,
-        name: "White Beans",
-        basePrice: 5000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["white beans.png", "white peas.jpg"]
-    },
-    {
-        id: 29,
-        name: "Yellow Beans",
-        basePrice: 5000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["yellow beans.png", "yellow beans (2).jpg", "yellow beans (1).jpg"]
-    },
-    {
-        id: 1,
-        name: "Azam Home Baking Flour",
-        basePrice: 7000,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 5, 10],
-        discountPercentage: 0,
-        images: ["Azam Home Baking Flour.jpg", "azam (1).jpg", "azam (2).jpg"]
-    },
-    {
-        id: 2,
-        name: "Habari Salt",
-        basePrice: 800,
-        baseQuantity: 1,
-        unit: "pcs",
-        quantityOptions: [1, 2, 3, 4, 5, 10, 20, 30, 40],
-        discountPercentage: 0,
-        images: ["habari salt.jpg", "habaari (1).jpg", "habaari (2).jpg"]
-    },
-    {
-        id: 3,
-        name: "Jamaa Soap Cream",
-        basePrice: 5500,
-        baseQuantity: 1,
-        unit: "kg",
-        quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        discountPercentage: 0,
-        images: ["jamaa.jpg", "jamaa (1).jpg", "jamaa (2).jpg"]
-    },
-    {
-        id: 5,
-        name: "Magic Detergent (Large)",
-        basePrice: 12000,
-        baseQuantity: 1,
-        unit: "bucket",
-        quantityOptions: [1, 5, 10, 20],
-        discountPercentage: 0,
-        images: ["magic bucket (1).jpg", "magic bucket (2).jpg", "magic bucket (3).jpg"]
-    },
-    
-    {
-        id: 6,
-        name: "Roki Roki Vegetable Cooking Oil",
-        basePrice: 28000,
-        baseQuantity: 3,
-        unit: "L",
-        quantityOptions: [3, 6, 9, 12],
-        discountPercentage: 0,
-        images: ["roki 3 litres.jpg", "roki 2l (1).jpg", "roki 2l (2).jpg"]
-    },
-    {
-        id: 7,
-        name: "Roki Roki Vegetable Cooking Oil",
-        basePrice: 38000,
-        baseQuantity: 5,
-        unit: "L",
-        quantityOptions: [5, 10, 15, 20],
-        discountPercentage: 0,
-        images: ["roki 5 litres.jpg", "roki 5l (1).jpg", "roki 5l (2).jpg"]
-    },
-    {
-        id: 8,
-        name: "Royco Mchuzi Mix Chicken",
-        basePrice: 5000,
-        baseQuantity: 200,
-        unit: "g",
-        quantityOptions: [200, 400, 600, 800],
-        discountPercentage: 0,
-        images: ["royco blue.jpg", "", ""]
-    },
-    {
-        id: 9,
-        name: "Royco Mchuzi Mix Beef",
-        basePrice: 10000,
-        baseQuantity: 500,
-        unit: "g",
-        quantityOptions: [500, 1000, 1500, 2000],
-        discountPercentage: 0,
-        images: ["royco green.jpg", "beef royco (1).jpg", "beef royco (2).jpg"]
-    },
-    {
-        id: 10,
-        name: "Supreme Flour Home Baking Flour",
-        basePrice: 6800,
-        baseQuantity: 2,
-        unit: "kg",
-        quantityOptions: [2, 4, 6, 8],
-        discountPercentage: 0,
-        images: ["supreme.jpg", "supreme (1).jpg", "supreme (2).jpg"]
-    }
-];
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-UG', { style: 'currency', currency: 'UGX', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
-        }
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="sea salt (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="sea salt (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="sea salt (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-        let currentProductId;
-let currentImageIndex;
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="peas (3).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="peas (3).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="peas (3).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-function applySpecificDiscounts() {
-    const discounts = {
-        1: 5,   // Azam Home Baking Flour: 5% off
-        2: 7,   // Habari Salt: 7% off
-        3: 3,   // Jamaa Soap Cream: 3% off
-        5: 8,   // Magic Detergent (Large): 8% off
-        6: 10,  // Roki Roki Vegetable Cooking Oil (3L): 10% off
-        7: 6,   // Roki Roki Vegetable Cooking Oil (5L): 6% off
-        8: 2,   // Royco Mchuzi Mix Chicken: 2% off
-        9: 4,   // Royco Mchuzi Mix Beef: 4% off
-        10: 9,  // Supreme Flour Home Baking Flour: 9% off
-        11: 3,  // Beans (Nambaale): 3% off
-        12: 8,  // Rice (Super): 8% off
-        13: 5,  // Cow Peas: 5% off
-        14: 7,  // Rice (Super Extra): 7% off
-        15: 6,  // Agroben Long Grain Rice: 6% off
-        16: 1,  // Groundnuts: 1% off
-        17: 4,  // Kakira Sugar (Light Brown): 4% off
-        18: 10, // King Fortified Maize Flour: 10% off
-        19: 2,  // Beans (Masavu): 2% off
-        20: 5,  // Sorghum: 5% off
-        21: 9,  // Green Beans: 9% off
-        22: 3,  // Sanyuka Maize Flour: 3% off
-        23: 2,  // Sea Salt: 2% off
-        25: 8,  // Kiroko Beans: 8% off
-        26: 9,  // Bushera: 9% off
-        27: 6,  // Tea Leaves: 6% off
-        28: 4,  // White Beans: 4% off
-        29: 7,  // Yellow Beans: 7% off
-        30: 5,  // (New product ID): 5% off
-        31: 1,  // (New product ID): 1% off
-        32: 3   // (New product ID): 3% off
-    };
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="ground nuts (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="ground nuts (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="ground nuts (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
 
-    products.forEach(product => {
-        if (discounts.hasOwnProperty(product.id)) {
-            const discountPercentage = discounts[product.id];
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="tea (1).jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="tea (1).jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
+                <a href="tea (1).jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Portfolio Section -->
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row no-gutters">
+      
+      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
+        <div class="content">
+
+          <h3><br>OUR OBJECTIVES</h3>
+            1. To provide our customers with high-quality products at competitive prices, ensuring accessibility for everyone.<br>
+            2. To continually expand our product range to meet the evolving needs of our customers.<br>
+            3. To create a welcoming and inclusive shopping environment where all customers feel valued.<br>
+            4. To maintain the highest standards of customer service, ensuring satisfaction at every stage of the shopping experience.<br>
+            5. To support the local community through various initiatives, including sponsorships and partnerships with local businesses.<br> 
+            6. To embrace sustainable practices in our operations, contributing to a healthier environment.<br>
+            7. To develop and implement innovative solutions to improve efficiency and customer experience.<br>
+            8. To continuously seek feedback from customers to enhance our services and product offerings.<br>
             
-            // Calculate the "original" price before discount
-            const originalPrice = Math.round(product.basePrice / (1 - discountPercentage / 100));
+            <h3><br>SOURCES OF FUNDING</h3>
+            1. Revenue generated from sales of products across our stores.<br>
+            2. Investments from partners and stakeholders.<br>
+            3. Community support through local partnerships and collaborations.<br>
+            4. Financial backing from investors who believe in our mission and growth potential.<br>
 
-            // Update the product object
-            product.discountPercentage = discountPercentage;
-            product.originalPrice = originalPrice;
-            // The basePrice remains the same, which will be our "discounted" price
-        } else {
-            // For products without a specific discount, set discount to 0
-            product.discountPercentage = 0;
-            product.originalPrice = product.basePrice;
-        }
-    });
-}
+<h3><br>REQUEST FOR PARTNERSHIP</h3>
+As GM General Stores continues to grow and expand, we invite organizations and individuals who share our vision to partner with us. Your support is crucial in helping us to better serve our customers and communities. We are committed to delivering quality products and services with integrity and excellence. Join us in our mission to create a better shopping experience for all.
+        </div>
+      </div>
+      
+          </div>
+        </div><!-- End .content-->
+      </div>
+    </div>
 
-// Call this function before rendering products
-applySpecificDiscounts();
+  </div>
+</section><!-- End About Section -->
 
-function openPreview(productId, imageIndex) {
-    const product = products.find(p => p.id === productId);
-    currentProductId = productId;
-    currentImageIndex = imageIndex;
-    
-    const previewImage = document.getElementById('preview-image');
-    previewImage.src = product.images[imageIndex];
-    
-    document.getElementById('fullscreen-preview').style.display = 'block';
-}
 
-function closePreview() {
-    document.getElementById('fullscreen-preview').style.display = 'none';
-}
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
 
-function navigatePreview(direction) {
-    const product = products.find(p => p.id === currentProductId);
-    currentImageIndex += direction;
-    
-    if (currentImageIndex < 0) {
-        currentImageIndex = product.images.length - 1;
-    } else if (currentImageIndex >= product.images.length) {
-        currentImageIndex = 0;
-    }
-    
-    document.getElementById('preview-image').src = product.images[currentImageIndex];
-}
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Testimonials</h2>
+          <p>Below is what people say about us</p>
+        </div>
 
-document.getElementById('close-preview').addEventListener('click', closePreview);
-document.getElementById('prev-button').addEventListener('click', () => navigatePreview(-1));
-document.getElementById('next-button').addEventListener('click', () => navigatePreview(1));
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
 
-function renderProducts(productsToRender) {
-    const productsContainer = document.getElementById('products');
-    productsContainer.innerHTML = '';
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+I thank GM General Stores for providing us with quality rice and other food products. On behalf of my entire family, we are humbled! 🙏  <i class="bx bxs-quote-alt-right quote-icon-right"></i>              </p>
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Kayesu Mary</h3>
+                <h4>Client</h4>
+              </div>
+            </div><!-- End testimonial item -->
 
-    productsToRender.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        
-        let quantityOptionsHTML = '';
-        if (product.quantityOptions) {
-            quantityOptionsHTML = `
-                <select class="quantity-select" onchange="updateProductDetails(${product.id}, this.value)">
-                    ${product.quantityOptions.map(q => `<option value="${q}">${q}${product.unit}</option>`).join('')}
-                </select>
-            `;
-        }
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  I have never regreted buying rice and other food products from GM General Stores. I am grateful for their excellent service. 👌<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Kizito Joseph</h3>
+                <h4>Customer</h4>
+              </div>
+            </div><!-- End testimonial item -->
 
-        // The discountedPrice is now the basePrice
-        const discountedPrice = product.basePrice;
-        // The originalPrice is calculated based on the discount percentage
-        const originalPrice = product.originalPrice || product.basePrice;
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
 
-        const discountRibbon = product.discountPercentage > 0 
-            ? `<div class="discount-ribbon">${product.discountPercentage}% OFF</div>`
-            : '';
+      </div>
+    </section><!-- End Testimonials Section -->
 
-        card.innerHTML = `
-            ${discountRibbon}
-            <img src="${product.images[0]}" alt="${product.name}" onclick="openPreview(${product.id}, 0)">
-            <h3 id="name-${product.id}">${product.name} - ${product.baseQuantity}${product.unit}</h3>
-            <p class="original-price" id="original-price-${product.id}">${formatCurrency(originalPrice)}</p>
-            <p class="discounted-price" id="discounted-price-${product.id}">${formatCurrency(discountedPrice)}</p>
-            ${quantityOptionsHTML}
-            <button class="add-to-cart" id="add-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
-            <div class="quantity-control" id="quantity-${product.id}">
-                <button onclick="decrementQuantity(${product.id})">-</button>
-                <span>0</span>
-                <button onclick="incrementQuantity(${product.id})">+</button>
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Founders</h2>
+          <p>These are the founders of our organisation.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Kiryowa Joshua</h4>
+                <p>0757916929</p>
+                <span>CEO</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
             </div>
-        `;
-        productsContainer.appendChild(card);
-    });
-    updateAllQuantityDisplays();
-}
+          </div>
 
-function updateProductDetails(productId, newQuantity) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+          <!-- <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="150">
+              <div class="pic"><img src="assets/img/portfolio/IMG-20240620-WA0006.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Kigozi Muhammad</h4>
+                <p>+ (256) 783919781</p> 
+                <span>Director</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
+        </div>
 
-    const quantityRatio = newQuantity / product.baseQuantity;
-    const newPrice = product.basePrice * quantityRatio;
-    const discountedPrice = newPrice * (1 - product.discountPercentage / 100);
+      </div>
+    </section><!-- End Team Section -->
 
-    // Update the displayed product details
-    document.getElementById(`name-${productId}`).textContent = `${product.name} - ${newQuantity}${product.unit}`;
-    document.getElementById(`original-price-${productId}`).textContent = formatCurrency(newPrice);
-    document.getElementById(`discounted-price-${productId}`).textContent = formatCurrency(discountedPrice);
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
 
-    // Update the "Add to Cart" button and quantity control
-    const addButton = document.getElementById(`add-${productId}`);
-    const quantityControl = document.getElementById(`quantity-${productId}`);
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Use the following information to get in touch with us today!</p>
+        </div>
 
-    // Check if this specific product-quantity combination is in the cart
-    const cartItemId = `${productId}-${newQuantity}`;
-    if (cart[cartItemId]) {
-        // If it's in the cart, show the quantity control with the current quantity
-        addButton.style.display = 'none';
-        quantityControl.style.display = 'inline-block';
-        quantityControl.querySelector('span').textContent = cart[cartItemId].quantity;
-    } else {
-        // If it's not in the cart, show the "Add to Cart" button
-        addButton.style.display = 'inline-block';
-        quantityControl.style.display = 'none';
-    }
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p> Kalerwe - Kampala, Uganda.</p>
+              <p>Located at the junction of the Kalerwe Road near Kalerwe Market.
 
-    // Update the onclick handler for the "Add to Cart" button
-    addButton.onclick = () => addToCart(productId, parseInt(newQuantity));
+</p>
+            </div>
+          </div>
 
-    // Update the onclick handlers for the quantity control buttons
-    const decrementButton = quantityControl.querySelector('button:first-child');
-    const incrementButton = quantityControl.querySelector('button:last-child');
-    decrementButton.onclick = () => decrementQuantity(productId, parseInt(newQuantity));
-    incrementButton.onclick = () => incrementQuantity(productId, parseInt(newQuantity));
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>gmgeneraltraders@gmail.com</p>
+            </div>
+          </div>
 
-}
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+256 757916929</p>
+            </div>
+          </div>     
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-user"></i>
+              <h3>Account Number: 4860610031311431</h3>
+              <p>Name of the Bank: Equiity Bank </p>
+              <p>Branch: Kampala Branch</p>
+              <p>Account title: GM General Traders</p>
+            </div>
+          </div>
 
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
+        </div>
 
-function clearCart() {
-    cart = {};
-    saveCart();
-    updateCartCount();
-    updateCartModal();
-    renderProducts(products);
-}
+        <div class="row">
 
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
-    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : product.baseQuantity;
-    const quantityRatio = selectedQuantity / product.baseQuantity;
-    const newPrice = product.basePrice * quantityRatio;
-    const discountedPrice = newPrice * (1 - product.discountPercentage / 100);
+          <div class="col-lg-6 "><center>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.743660790285!2d32.57169595!3d0.35051325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbafcc9a58a1b%3A0xccc6d63c15cc51fd!2sKalerwe%20Market%2C%20Kampala!5e0!3m2!1sen!2sug!4v1724131754719!5m2!1sen!2sug" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
 
-    const cartItemId = `${productId}-${selectedQuantity}`;
+      </div>
+    </section><!-- End Contact Section -->
 
-    if (!cart[cartItemId]) {
-        cart[cartItemId] = {
-            ...product,
-            cartItemId: cartItemId,
-            name: `${product.name} - ${selectedQuantity}${product.unit}`,
-            price: discountedPrice,
-            quantity: 1,
-            selectedQuantity: selectedQuantity
-        };
-        updateQuantityDisplay(cartItemId, 1);
-        showFlashMessage(`${cart[cartItemId].name} added to cart successfully`, 'success');
-    } else {
-        cart[cartItemId].quantity++;
-        updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
-        showFlashMessage(`Increased quantity of ${cart[cartItemId].name}`, 'success');
-    }
-    updateCartCount();
-    updateCartModal();
-    saveCart();
-}
+  </main><!-- End #main -->
 
-function incrementQuantity(productId) {
-    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
-    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : products.find(p => p.id === productId).baseQuantity;
-    const cartItemId = `${productId}-${selectedQuantity}`;
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <footer class="text-center">
+      <div class="credits">
+          &copy;  GM General Traders<br><span id="year"> </span> All Rights Reserved 
+      </div>
+  </footer><!-- End Footer -->
 
-    if (!cart[cartItemId]) {
-        addToCart(productId);
-    } else {
-        cart[cartItemId].quantity++;
-        updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
-        showFlashMessage(`Increased quantity of ${cart[cartItemId].name}`, 'success');
-        updateCartCount();
-        updateCartModal();
-        saveCart();
-    }
-}
+<script>
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-function decrementQuantity(productId) {
-    const quantitySelect = document.querySelector(`.card:has(#add-${productId}) .quantity-select`);
-    const selectedQuantity = quantitySelect ? parseInt(quantitySelect.value) : products.find(p => p.id === productId).baseQuantity;
-    const cartItemId = `${productId}-${selectedQuantity}`;
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
 
-    if (cart[cartItemId]) {
-        cart[cartItemId].quantity--;
-        if (cart[cartItemId].quantity === 0) {
-            delete cart[cartItemId];
-            updateQuantityDisplay(cartItemId, 0);
-            showFlashMessage(`${cart[cartItemId].name} removed from cart`, 'error');
-        } else {
-            updateQuantityDisplay(cartItemId, cart[cartItemId].quantity);
-            showFlashMessage(`Decreased quantity of ${cart[cartItemId].name}`, 'error');
-        }
-        updateCartCount();
-        updateCartModal();
-        saveCart();
-    }
-}
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
-function updateQuantityDisplay(cartItemId, quantity) {
-    let productId, selectedQuantity;
-
-    if (typeof cartItemId === 'string' && cartItemId.includes('-')) {
-        [productId, selectedQuantity] = cartItemId.split('-');
-    } else {
-        // If cartItemId is not in the expected format, assume it's just the productId
-        productId = cartItemId;
-    }
-
-    const addButton = document.getElementById(`add-${productId}`);
-    const quantityControl = document.getElementById(`quantity-${productId}`);
-    
-    if (!addButton || !quantityControl) {
-        console.warn(`Elements not found for product ID: ${productId}`);
-        return;
-    }
-
-    const quantitySpan = quantityControl.querySelector('span');
-
-    if (quantity > 0) {
-        addButton.style.display = 'none';
-        quantityControl.style.display = 'inline-block';
-        quantitySpan.textContent = quantity;
-    } else {
-        addButton.style.display = 'inline-block';
-        quantityControl.style.display = 'none';
-    }
-}
-
-        function updateCartCount() {
-    const cartCount = document.getElementById('cart-count');
-    const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
-}
-
-function updateCartModal() {
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    const confirmOrderButton = document.getElementById('confirm-order');
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    if (Object.keys(cart).length === 0) {
-        cartItems.innerHTML = '<li class="empty-cart-message"><em>Your cart is empty. Please add some items to start shopping.</em></li>';
-        cartTotal.style.display = 'none';
-        confirmOrderButton.style.display = 'none';
-    } else {
-        Object.entries(cart).forEach(([cartItemId, item]) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                ${item.name} x${item.quantity} - ${formatCurrency(item.price * item.quantity)}
-                <button class="remove-item" data-id="${cartItemId}">Remove</button>
-            `;
-            cartItems.appendChild(li);
-            total += item.price * item.quantity;
-        });
-
-        cartTotal.textContent = `Total: ${formatCurrency(total)}`;
-        cartTotal.style.display = 'block';
-        confirmOrderButton.style.display = 'block';
-
-        // Attach event listeners to remove buttons
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function() {
-                showRemoveItemModal(this.getAttribute('data-id'));
-            });
-        });
-    }
-}
-
-function showRemoveItemModal(cartItemId) {
-    itemToRemove = cartItemId;
-    document.getElementById('remove-item-modal').style.display = 'block';
-}
-
-function hideRemoveItemModal() {
-    console.log("hideRemoveItemModal called");
-    const modal = document.getElementById('remove-item-modal');
-    console.log("Modal element:", modal);
-    modal.style.display = 'none';
-    console.log("Modal display set to none");
-}
-
-function removeItemFromCart() {
-    console.log("removeItemFromCart called");
-
-    if (itemToRemove && cart[itemToRemove]) {
-        delete cart[itemToRemove];
-        saveCart();
-        updateCartCount();
-        updateCartModal();
-        renderProducts(products);
-        showFlashMessage(`Item removed from cart`, 'error');
-    }
-    hideRemoveItemModal(); // Make sure this line is present
-    console.log("About to hide modal");
-    hideRemoveItemModal();
-    console.log("Modal should be hidden now");
-    itemToRemove = null;
-}
-
-// Event listeners for the remove item confirmation modal
-document.getElementById('remove-item-yes').addEventListener('click', removeItemFromCart);
-document.getElementById('remove-item-no').addEventListener('click', hideRemoveItemModal);
-
-        function filterProducts() {
-    const searchTerm = document.getElementById('search').value.toLowerCase();
-
-    const filteredProducts = products.filter(product => 
-        product.name.toLowerCase().includes(searchTerm)
-    );
-
-    renderProducts(filteredProducts);
-    updateAllQuantityDisplays();
-}
-
-function updateAllQuantityDisplays() {
-    Object.entries(cart).forEach(([cartItemId, item]) => {
-        updateQuantityDisplay(cartItemId, item.quantity);
-    });
-}
-
-// Call this function when the page loads
-function initializeCart() {
-    updateCartCount();
-    updateCartModal();
-    renderProducts(products);
-}
-
-        function showFlashMessage(message, type) {
-            const flashMessage = document.getElementById('flash-message');
-            flashMessage.textContent = message;
-            flashMessage.className = type;
-            flashMessage.style.display = 'block';
-            setTimeout(() => {
-                flashMessage.style.display = 'none';
-            }, 3000);
-        }
-
-   
-
-        document.getElementById('cart-icon').addEventListener('click', () => {
-    document.getElementById('cart-modal').classList.add('open');
-});
-
-document.getElementById('close-cart').addEventListener('click', () => {
-    const cartModal = document.getElementById('cart-modal');
-    cartModal.classList.add('sliding-out');
-    setTimeout(() => {
-        cartModal.classList.remove('open', 'sliding-out');
-    }, 500);
-});
-
-        renderProducts(products);
-
-        // Scroll to top functionality
-        function initScrollToTop() {
-    const scrollToTopButton = document.getElementById("scroll-to-top");
-    
-    if (scrollToTopButton) {
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollToTopButton.style.display = "block";
-            } else {
-                scrollToTopButton.style.display = "none";
-            }
-        };
-
-        scrollToTopButton.onclick = function(e) {
-            e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
-    }
-}
-
-function scrollToTop() {
-    const scrollToTop = window.setInterval(function() {
-        const pos = window.pageYOffset;
-        if (pos > 0) {
-            window.scrollTo(0, pos - 20); // Adjust the '20' for faster/slower scrolling
-        } else {
-            window.clearInterval(scrollToTop);
-        }
-    }, 16);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-        // Add this line:
-        initReadMoreLink();
-
-    initScrollToTop();
-    // You can also call other initialization functions here
-    initializeCart();
-});
-
-// Add this new function:
-function initReadMoreLink() {
-    const readMoreLink = document.getElementById("read-more");
-    
-    if (readMoreLink) {
-        readMoreLink.onclick = function(e) {
-            e.preventDefault();
-            window.location.href = 'about.html';
-        };
-    }
-}
-    </script>
-    <!-- Add this button somewhere in your body, typically at the end -->
-<button id="scroll-to-top" title="Go to top">↑</button>
-<a href="about.html" id="read-more" title="Read More">
-    <span><i class="fas fa-info-circle"></i></span>
-  </a>
-
-<!-- Add this footer just before the closing </body> tag -->
-<footer id="sticky-footer">
-    <p> ©  GM General Stores  <BR> 0757916929</p>
-</footer>
 </body>
+
 </html>
